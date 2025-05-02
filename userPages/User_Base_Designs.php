@@ -27,19 +27,19 @@ if (!isset($_SESSION['User-Id']) || !isset($_SESSION['Registration-Id'])) {
                     <button class="dashboard-btn" onclick="dashboarddrop()"><img src="../imgs/chevron-down.svg" class ="bi-chevron-down"></button>
                     <ul class="dashboard-ul">
                         <li>
-                            <a href="../userPages/Student_Dashboard.php">Home</a>
+                            <a href="../userPages/User_Enrollees.php">Home</a>
                         </li>
                         <li>
                             <a href="../userPages/Enrollment_Form.php" class="eForm">Enrollment Form</a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="../userPages/User_Enrollment_Status.php" class="eStat">Enrollment Status</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
 
                 <!--SUBJECTS-->
-                <div class="menu border-100sb" id="subjects">
+                <!-- <div class="menu border-100sb" id="subjects">
                     <img src="../imgs/book.svg" class="bi">
                     <span class="menu-title">Subjects</span>
                     <button class="subjects-btn" onclick="subjectsdrop()"><img src="../imgs/chevron-down.svg" class ="bi-chevron-down"></button>
@@ -51,10 +51,10 @@ if (!isset($_SESSION['User-Id']) || !isset($_SESSION['Registration-Id'])) {
                                 <a href="view-Grades.php" class="viewGrades">View Grades</a>
                             </li>
                     </ul>
-                </div>
+                </div> -->
                 
                 <!--TEACHERS-->
-                <div class="menu border-100sb" id="teachers">
+                <!-- <div class="menu border-100sb" id="teachers">
                     <img src="../imgs/people-fill.svg" class="bi bi-person">
                     <span class="menu-title">Teachers</span>
                     <button class="teachers-btn" onclick="teachersdrop()"><img src="../imgs/chevron-down.svg" class ="bi-chevron-down"></button>
@@ -72,12 +72,12 @@ if (!isset($_SESSION['User-Id']) || !isset($_SESSION['Registration-Id'])) {
                             <a href="" class="">Prof. Dr. Eng. Jearard David</a>
                             <a href="" class="">Prof. Dr. Eng. Jearard David</a>
                         </li>
-                </div>
+                </div> -->
                 <!--MISSION AND VISION-->
                 <div class="menu border-100sb" id="mv">
                     <img src="../imgs/check2-circle.svg" class="bi">
-                    <a href="mission-vision.php"><span class="menu-title">Mission & Vision</span></a>
-                </div>  
+                    <a href=""><span class="menu-title">Mission & Vision</span></a>
+                </div>
             </div>
         </div>
     </div>
@@ -122,7 +122,7 @@ if (!isset($_SESSION['User-Id']) || !isset($_SESSION['Registration-Id'])) {
                             </div>
                         </div>
                         <div class="account-link-wrapper">
-                            <a href=""><img src="" alt="">Edit Profile</a><br>
+                            <!-- <a href=""><img src="" alt="">Edit Profile</a><br> -->
                             <a href="../../fcking-enrollment-system/client_side/Change_Password.php"><img src="" alt="">Update Password</a><br>
                             <a href="../../fcking-enrollment-system/server_side/logout.php" id="logout">Logout</a>
                         </div>

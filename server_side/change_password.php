@@ -12,7 +12,7 @@ class ChangePassword {
     }
 
     public function change_password($User_Typed_Password, $User_New_Password, $User_New_Password_Confirm) {
-        $User_Id = $_SESSION['User_Id'];
+        $User_Id = $_SESSION['User-Id'];
         $sql_find_information = "SELECT users.*, registrations.* FROM users 
                                     JOIN registrations ON users.Registration_Id = registrations.Registration_Id
                                     WHERE users.User_Id = :User_Id;";

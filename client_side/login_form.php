@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['User-Id']) && isset($_SESSION['Registration-Id'])) {
-    header("Location: ../userPages/Parent_Login.php");
+    header("Location: ../userPages/User_Enrollees.php");
     exit();
 }
 ?>

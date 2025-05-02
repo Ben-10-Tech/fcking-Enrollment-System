@@ -18,7 +18,7 @@ Class VerifyLogin {
                                     WHERE registrations.Contact_Number = :Contact_Number;";
         $find_information = $this->conn->prepare($sql_find_information);
         $find_information->bindparam(':Contact_Number', $User_Typed_Phone_Number);
-        if ($find_information->execute()) {
+        if ($find_information->execute()) { 
             $result = $find_information->fetch(PDO::FETCH_ASSOC);
             if ($result) {
                 $User_Password = $result['Password'];
@@ -32,7 +32,6 @@ Class VerifyLogin {
                     $_SESSION['Last-Name'] = $result['Last_Name'];
                     $_SESSION['Middle-Name'] = $result['Middle_Name'];
                     $_SESSION['Contact-Number'] = $result['Contact_Number'];
-                    echo "<script> console.log('" . $_SESSION['User-Id']."') </script>";
                     //replace with change location and add session shit
                     header("Location: ../userPages/User_Enrollees.php");
                     exit();
