@@ -208,7 +208,7 @@ class EnrollmentForm {
     }   
 
     // Insert enrollee function MAIN FUNCTION!!!!
-    public function Insert_Enrollee($School_Year_Start, $School_Year_End, $If_LRNN_Returning, $Enrolling_Grade_Level, $Last_Grade_Level, $Last_Year_Attended,
+    public function Insert_Enrollee($User_Id, $School_Year_Start, $School_Year_End, $If_LRNN_Returning, $Enrolling_Grade_Level, $Last_Grade_Level, $Last_Year_Attended,
     $Last_School_Attended, $School_Id, $School_Address, $School_Type, $Initial_School_Choice, $Initial_School_Id, $Initial_School_Address,
     $Have_Special_Condition, $Have_Assistive_Tech, $Special_Condition, $Assistive_Tech,
     $House_Number, $Subd_Name, $Brgy_Name, $Municipality_Name, $Province_Name, $Region,
@@ -239,15 +239,16 @@ class EnrollmentForm {
             }
 
             // Insert enrollee
-            $sql_enrollee = "INSERT INTO enrollee (Student_First_Name, Student_Middle_Name, Student_Last_Name, Student_Extension, Learner_Reference_Number, Psa_Number, Birth_Date, Age, Sex, Religion, 
+            $sql_enrollee = "INSERT INTO enrollee (User_Id,Student_First_Name, Student_Middle_Name, Student_Last_Name, Student_Extension, Learner_Reference_Number, Psa_Number, Birth_Date, Age, Sex, Religion, 
                             Native_Language, If_Cultural, Cultural_Group, Student_Email, Enrollment_Status, Enrollee_Address_Id,
                             Educational_Information_Id, Educational_Background_Id, Disabled_Student_Id, Psa_Image_Id)
-                            VALUES (:Student_First_Name, :Student_Middle_Name, :Student_Last_Name, :Student_Extension, :Learner_Reference_Number, :Psa_Number, :Birth_Date, :Age, :Sex, :Religion, :Native_Language, 
+                            VALUES (:User_Id,:Student_First_Name, :Student_Middle_Name, :Student_Last_Name, :Student_Extension, :Learner_Reference_Number, :Psa_Number, :Birth_Date, :Age, :Sex, :Religion, :Native_Language, 
                             :If_Cultural, :Cultural_Group, :Student_Email, :Enrollment_Status, :Enrollee_Address_Id, :Educational_Information_Id, 
                             :Educational_Background_Id, :Disabled_Student_Id, :Psa_Image_Id);";
             
             // just binding parameters
             $insert_enrollee = $this->conn->prepare($sql_enrollee);
+            $insert_enrollee->bindParam(':User_Id', $User_Id);
             $insert_enrollee->bindParam(':Student_First_Name', $Student_First_Name);
             $insert_enrollee->bindParam(':Student_Middle_Name', $Student_Middle_Name);
             $insert_enrollee->bindParam(':Student_Last_Name', $Student_Last_Name);

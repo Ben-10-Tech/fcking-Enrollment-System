@@ -18,7 +18,7 @@
             </div>
 
             <div class="content-wrapper">
-                <form id="enrollment-form" class="form-main" method="POST" action="../server_side/post_enrollment_form_data.php">
+                <form id="enrollment-form" class="form-main" method="POST" action="../server_side/post_enrollment_form_data.php" enctype="multipart/form-data">
                     <!--ANTAS AT IMPORMASYON NG PAARALAN-->
                     <div class="previous-school border-75">
                         <div class="previous-school-title">
@@ -417,7 +417,7 @@
                                     <div class="error-msg">
                                         <span class="em-f-number"></span>
                                     </div>
-                                    <input type="text" name="F-number" id="F-number" class="textbox" placeholder="09123456789">
+                                    <input type="text" name="F-Number" id="F-number" class="textbox" placeholder="09123456789">
                                 </div>
                             </div>
 
@@ -462,7 +462,7 @@
                                     <div class="error-msg">
                                         <span class="em-m-number"></span>
                                     </div>
-                                    <input type="text" name="M-number" id="M-number" class="textbox" placeholder="09123456789">
+                                    <input type="text" name="M-Number" id="M-number" class="textbox" placeholder="09123456789">
                                 </div>
                             </div>
 
@@ -507,7 +507,7 @@
                                     <div class="error-msg">
                                         <span class="em-g-number"></span>
                                     </div>
-                                    <input type="text" name="G-number" id="G-number" class="textbox" placeholder="09123456789">
+                                    <input type="text" name="G-Number" id="G-number" class="textbox" placeholder="09123456789">
                                 </div>
                             </div>
                         </div>

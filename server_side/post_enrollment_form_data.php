@@ -1,10 +1,13 @@
 <?php
+session_start();
 require_once 'enrollment_form.php';
 
 try {
     if ($_SERVER['REQUEST_METHOD'] === "POST") {
         $enrollment_form = new EnrollmentForm();
-    
+        if (isset($_SESSION['User-Id'])) {
+            $userId = $_SESSION['User-Id'];
+        }
         // EDUCATIONAL INFORMATION
         $School_Year_Start = $_POST['start-year'] ?? "";
         $School_Year_End = $_POST['end-year'] ?? "";
@@ -30,7 +33,7 @@ try {
     
         //  EROLLEE ADDRESS
         $House_Number = $_POST['house-number'] ?? "";
-        $Subd_Name = $_POST['division'] ?? "";
+        $Subd_Name = $_POST['subdivision'] ?? "";
         $Brgy_Name = $_POST['barangay'] ?? "";
         $Municipality_Name = $_POST['city-municipality'] ?? "";
         $Province_Name = $_POST['province'] ?? "";
@@ -45,18 +48,18 @@ try {
         $Father_Contact_Number = $_POST['F-Number'] ?? "";
         $FIf_4Ps = $_POST['fourPS'] ?? "";
     
-        $Mother_First_Name = $_POST['Mother_First_Name'] ?? "";
-        $Mother_Last_Name = $_POST['Mother_Last_Name'] ?? "";
-        $Mother_Middle_Name = $_POST['Mother_Middle_Name'] ?? "";
+        $Mother_First_Name = $_POST['Mother-First_Name'] ?? "";
+        $Mother_Last_Name = $_POST['Mother-Last_Name'] ?? "";
+        $Mother_Middle_Name = $_POST['Mother-Middle_Name'] ?? "";
         $Mother_Parent_Type = "Mother";
         $Mother_Educational_Attainment = $_POST['M-highest-education'] ?? "";
         $Mother_Contact_Number = $_POST['M-Number'] ?? "";
         $MIf_4Ps = $_POST['fourPS'] ?? "";
     
     
-        $Guardian_First_Name = $_POST['Guardian_First_Name'] ?? "";
-        $Guardian_Last_Name = $_POST['Guardian_Last_Name'] ?? "";
-        $Guardian_Middle_Name = $_POST['Guardian_Middle_Name'] ?? "";
+        $Guardian_First_Name = $_POST['Guardian-First_Name'] ?? "";
+        $Guardian_Last_Name = $_POST['Guardian-Last_Name'] ?? "";
+        $Guardian_Middle_Name = $_POST['Guardian-Middle_Name'] ?? "";
         $Guardian_Parent_Type = "Guardian";
         $Guardian_Educational_Attainment = $_POST['G-highest-education'] ?? "";
         $Guardian_Contact_Number = $_POST['G-Number'] ?? "";
@@ -99,12 +102,15 @@ try {
     
             if (in_array($imageActualExt, $allowedTypes)) {
                 if ($imageError === 0) {
-                    $targetFilePath = $uploadDirectory . basename($imageName);
+                    $time = time();
+                    $randomString = bin2hex(random_bytes(5)); 
+                    $uniqueName = $userId . "-" . $time . "-" . $randomString;
+                    $filename = $uniqueName . "." .$imageActualExt;
+                    $targetFilePath =  $uploadDirectory . $filename;
                     if (move_uploaded_file($imageTmpName, $targetFilePath)) {
-                        $filename = isset($imageName) ? $imageName: null;
-                        $directory = isset($targetFilePath) ? $targetFilePath: null;
+                        $directory = $targetFilePath;
                         //insert the values into the database
-                        if ($enrollment_form->Insert_Enrollee($School_Year_Start, $School_Year_End, $If_LRNN_Returning, $Enrolling_Grade_Level, $Last_Grade_Level, $Last_Year_Attended,
+                        if ($enrollment_form->Insert_Enrollee($userId,$School_Year_Start, $School_Year_End, $If_LRNN_Returning, $Enrolling_Grade_Level, $Last_Grade_Level, $Last_Year_Attended,
                         $Last_School_Attended, $School_Id, $School_Address, $School_Type, $Initial_School_Choice, $Initial_School_Id, $Initial_School_Address,
                         $Have_Special_Condition, $Have_Assistive_Tech, $Special_Condition, $Assistive_Tech,
                         $House_Number, $Subd_Name, $Brgy_Name, $Municipality_Name, $Province_Name, $Region,
@@ -113,7 +119,9 @@ try {
                         $Guardian_First_Name, $Guardian_Last_Name, $Guardian_Middle_Name, $Guardian_Parent_Type, $Guardian_Educational_Attainment, $Guardian_Contact_Number, $GIf_4Ps,
                         $Student_First_Name, $Student_Middle_Name, $Student_Last_Name, $Student_Extension, $Learner_Reference_Number, $Psa_Number, $Birth_Date, $Age, $Sex, $Religion, 
                         $Native_Language, $If_Cultural, $Cultural_Group, $Student_Email, $Enrollment_Status, $filename, $directory)) {
-                                echo "Data inserted successfully.";
+                                
+                            header("Location: ../userPages/User_Enrollees.php");
+                            exit();
                         }
                         else {
                             echo "Error inserting data.";
