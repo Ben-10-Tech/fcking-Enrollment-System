@@ -51,7 +51,7 @@ class AdminEnrollmentAccessStatus {
             $allInfo = [
                 'Numero ng Sertipiko ng Kapanganakan' => htmlspecialchars($rows['Psa_Number']),
                 'Learner Reference Number' => htmlspecialchars($rows['Learner_Reference_Number']),
-                'Buong Pangalan' => htmlspecialchars($rows['Last_Name']) . ', '. htmlspecialchars($rows['First_Name']) . ' ' . htmlspecialchars($rows['Middle_Name']),
+                'Buong Pangalan' => htmlspecialchars($rows['Student_Last_Name']) . ', '. htmlspecialchars($rows['Student_First_Name']) . ' ' . htmlspecialchars($rows['Student_Middle_Name']),
                 'Petsa ng Kapanganakan' => htmlspecialchars($rows['Birth_Date']),
                 'Edad' => htmlspecialchars($rows['Age']),
                 'Kabilang sa katutubong grupo ' => $culutralGroup,

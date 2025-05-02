@@ -48,18 +48,18 @@ try {
         $Father_Contact_Number = $_POST['F-Number'] ?? "";
         $FIf_4Ps = $_POST['fourPS'] ?? "";
     
-        $Mother_First_Name = $_POST['Mother-First_Name'] ?? "";
-        $Mother_Last_Name = $_POST['Mother-Last_Name'] ?? "";
-        $Mother_Middle_Name = $_POST['Mother-Middle_Name'] ?? "";
+        $Mother_First_Name = $_POST['Mother-First-Name'] ?? "";
+        $Mother_Last_Name = $_POST['Mother-Last-Name'] ?? "";
+        $Mother_Middle_Name = $_POST['Mother-Middle-Name'] ?? "";
         $Mother_Parent_Type = "Mother";
         $Mother_Educational_Attainment = $_POST['M-highest-education'] ?? "";
         $Mother_Contact_Number = $_POST['M-Number'] ?? "";
         $MIf_4Ps = $_POST['fourPS'] ?? "";
     
     
-        $Guardian_First_Name = $_POST['Guardian-First_Name'] ?? "";
-        $Guardian_Last_Name = $_POST['Guardian-Last_Name'] ?? "";
-        $Guardian_Middle_Name = $_POST['Guardian-Middle_Name'] ?? "";
+        $Guardian_First_Name = $_POST['Guardian-First-Name'] ?? "";
+        $Guardian_Last_Name = $_POST['Guardian-Last-Name'] ?? "";
+        $Guardian_Middle_Name = $_POST['Guardian-Middle-Name'] ?? "";
         $Guardian_Parent_Type = "Guardian";
         $Guardian_Educational_Attainment = $_POST['G-highest-education'] ?? "";
         $Guardian_Contact_Number = $_POST['G-Number'] ?? "";
