@@ -22,8 +22,10 @@ Values are as follows
 1 = Officially Enrolled
 2 = Temporarily Enrolled 
 3 = Pending 
-4 = Rejected 
-5 = Inactive
+4 = To Follow
+5 = Rejected 
+6 = Inactive
+
 
 Test.php is used for testing queries and whether the function and object inside the file works.
 Form_Test.php is just a function tester for all the functions and query. 
