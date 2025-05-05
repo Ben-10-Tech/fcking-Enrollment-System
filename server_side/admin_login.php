@@ -13,9 +13,9 @@ Class VerifyLogin {
     public function verify_login($User_Typed_Phone_Number, $User_Typed_Password) {
         $User_Password = null;
         
-        $sql_find_information = "SELECT users.*, registrations.* FROM users 
-                                    JOIN registrations ON users.Registration_Id = registrations.Registration_Id
-                                    WHERE registrations.Contact_Number = :Contact_Number;";
+        $sql_find_information = "SELECT users.*, staffs.* FROM users 
+                                JOIN staffs ON users.Staff_Id = staffs.Staff_Id
+                                WHERE staffs.Staff_Contact_Number = :Contact_Number;";
         $find_information = $this->conn->prepare($sql_find_information);
         $find_information->bindparam(':Contact_Number', $User_Typed_Phone_Number);
         if ($find_information->execute()) { 
@@ -27,14 +27,15 @@ Class VerifyLogin {
                 if (password_verify($User_Typed_Password, $User_Password)) {
 
                     $_SESSION['User-Id'] = $result['User_Id'];
-                    $_SESSION['Registration-Id'] = $result['Registration_Id'];
-                    $_SESSION['First-Name'] = $result['First_Name'];
-                    $_SESSION['Last-Name'] = $result['Last_Name'];
-                    $_SESSION['Middle-Name'] = $result['Middle_Name'];
-                    $_SESSION['Contact-Number'] = $result['Contact_Number'];
+                    $_SESSION['Staff-id'] = $result['Staff_Id'];
+                    $_SESSION['First-Name'] = $result['Staff_First_Name'];
+                    $_SESSION['Last-Name'] = $result['Staff_Last_Name'];
+                    $_SESSION['Middle-Name'] = $result['Staff_Middle_Name'];
+                    $_SESSION['Contact-Number'] = $result['Staff_Contact_Number'];
                     $_SESSION['User-Type'] = $result['User_Type'];
+
                     //replace with change location and add session shit
-                    header("Location: ../userPages/User_Enrollees.php");
+                    echo"Login Successful";
                     exit();
                 }
                 
@@ -50,3 +51,4 @@ Class VerifyLogin {
 }
 
 ?>
+
