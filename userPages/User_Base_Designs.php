@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['User-Id']) || !isset($_SESSION['Registration-Id'])) {
-    header("Location: ../client_side/login_form.php");
+    header("Location: ../client_side/index.php");
     exit();
 }
 ?>

@@ -12,6 +12,7 @@
     <!--START OF THE MAIN CONTENT-->
     <div class="content">
         <h1> Enrollment Forms Submitted </h1>
+        <div class="table-container">
         <table> 
             <?php
                 include_once __DIR__ . '/../server_side/userEnrolleesView.php';
@@ -19,6 +20,7 @@
                 $enrollee->displaySubmittedForms();
             ?>
         </table>
+        </div>
     </div>
 </body>
 </html>

@@ -61,8 +61,7 @@ class AdminEnrollmentStatusView {
                         <td>'
                             . $enrollmentStatus.'
                         </td>
-                        <td> <a href="Admin_Enrollment_Access_Status.php?s='.urlencode($rows['Enrollee_Id']).'" class="view-button"> View Info </a> </td>
-                        <td> <button class="view-button" data-id="' . htmlspecialchars($rows['Enrollee_Id']) . '"> View info</button><td>
+                        <td> <button class="view-button" data-id="' . $rows['Enrollee_Id'] . '"> View info</button><td>
                         </tr>';
             }
         }

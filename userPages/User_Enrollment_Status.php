@@ -20,5 +20,6 @@
             ?>
             <p> Your enrollment form is currently being processed. Please wait for 3-4 working days <p>
        </div>
+       <script src="../js/user-enrollment-status.js" defer></script>
     </body>
 </html>

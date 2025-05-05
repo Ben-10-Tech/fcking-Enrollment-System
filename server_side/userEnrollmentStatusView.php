@@ -38,7 +38,7 @@ class displayEnrollmentStatus {
             $status = $this->stringEquivalent((int) $data);
             echo "<script> console.log('" . $status . "') </script>";
 
-            echo '<h6 class="status-text">' . $status .'</h6>';
+            echo '<h6 class="status-text" id="status-text">' . $status .'</h6>';
         }
     }
 }

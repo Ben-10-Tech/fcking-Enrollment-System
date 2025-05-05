@@ -6,7 +6,7 @@
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="../css/admin_dashboard.css"> 
     <?php
-        include './admin_base_designs.php'; 
+        include '../adminPages/admin_base_designs.php'; 
     ?>
 
         <!--START OF THE MAIN CONTENT-->
