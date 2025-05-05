@@ -17,7 +17,7 @@ class SendPassword {
     }
 
     public function send_password($Last_Name, $First_Name, $Middle_Name, $Recipient_Contact_Number, $User_Password) {
-        $gatewayUrl = "http://192.168.93.16:8080/message"; // Replace mo to dabid gamit ang ip address ng server ng phone mo
+        $gatewayUrl = "http://192.168.1.183:8080/message"; // Replace mo to dabid gamit ang ip address ng server ng phone mo
         $username = "sms"; // Replace with the actual username to din
         $password = "D8uvMxgK"; // Replace with the actual password to din
 
