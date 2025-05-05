@@ -20,7 +20,11 @@
                     </div>
                     <div class="number-div">
                         <p class="number">
-                            1,300
+                            <?php
+                                include_once '../server_side/DashboardView.php';
+                                $dashboard = new DashboardView();
+                                $dashboard->displayEnrolledStudents();
+                            ?>
                         </p>
                     </div>
                 </div>
@@ -32,7 +36,11 @@
                     </div>
                     <div class="number-div">
                         <p class="number">
-                            450
+                            <?php
+                                include_once '../server_side/DashboardView.php';
+                                $dashboard = new DashboardView();
+                                $dashboard->displayPendingStudents();
+                            ?>
                         </p>
                     </div>
                 </div>
@@ -44,7 +52,11 @@
                     </div>
                     <div class="number-div">
                         <p class="number">
-                            213
+                            <?php
+                                include_once '../server_side/DashboardView.php';
+                                $dashboard = new DashboardView();
+                                $dashboard->displayToFollowStudents();
+                            ?>
                         </p>
                     </div>
                 </div>
@@ -52,11 +64,15 @@
                 <div class="card card-4">
                     <div class="card-image border-50">
                         <img src="../imgs/Early.png" alt="">
-                        <p class="card-text">Early Registration</p>   
+                        <p class="card-text">Temporarily Enrolled</p>   
                     </div>
                     <div class="number-div">
                         <p class="number">
-                            59
+                            <?php
+                                include_once '../server_side/DashboardView.php';
+                                $dashboard = new DashboardView();
+                                $dashboard->displayTemporarilyEnrolledStudents();
+                            ?>
                         </p>
                     </div>
                 </div>
