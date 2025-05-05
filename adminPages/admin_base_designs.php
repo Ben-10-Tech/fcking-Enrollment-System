@@ -1,4 +1,12 @@
-    <link rel="stylesheet" href="../css/fonts.css">
+<?php
+session_start();
+if (!isset($_SESSION['User-Id']) || !isset($_SESSION['Staff-Id'])) {
+    header("Location: ../client_side/admin_login_form.php");
+    exit();
+}
+?>
+
+<link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/admin_base_designs.css">
     <link rel="stylesheet" href="../css/reset.css">
     <script src="../js/admin-base-designs.js"></script>
