@@ -1,7 +1,7 @@
 <?php
 session_start();
-if (!isset($_SESSION['User-Id']) || !isset($_SESSION['Registration-Id'])) {
-    header("Location: ../client_side/index.php");
+if (!isset($_SESSION['User']['User-Id']) || !isset($_SESSION['User']['Registration-Id'])) {
+    header("Location: ../client_side/login_form.php");
     exit();
 }
 ?>
@@ -105,12 +105,14 @@ if (!isset($_SESSION['User-Id']) || !isset($_SESSION['Registration-Id'])) {
             <div class="account">
                 <button id="user-profile"><img src="../imgs/check2-circle.svg" alt=""></button>
                 <div class="account-settings-wrapper">
-                    <?php if(isset($_SESSION['First-Name']) && isset($_SESSION['Last-Name'])) {
-                        $name = $_SESSION['First-Name'] . ", " . $_SESSION['Last-Name'];
-                        echo "<p class='username'> $name </p>";
+                    <?php
+                        if (isset($_SESSION['User']) && isset($_SESSION['User']['First-Name']) && isset($_SESSION['User']['Last-Name']) && isset($_SESSION['User']['User-Type'])) {
+                            $name = $_SESSION['User']['First-Name'] . ", " . $_SESSION['User']['Last-Name'];
+                            $userType = $_SESSION['User']['User-Type'] == 0 ? "User" : "Unknown";
+                            echo "<p class='username'> $name </p>";
+                            echo "<p> $userType </p>";
                         }
                     ?>
-                    <p class="account-type">user</p>
                 </div>
                 <div class="account-settings-btn">
                     <button class="account-btn" onclick="accountDrop()"><img src="../imgs/chevron-down-black.svg" id="account-drop" alt=""></button>

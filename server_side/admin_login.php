@@ -37,14 +37,16 @@ Class VerifyLogin {
                 $User_Typed_Password = trim($User_Typed_Password);
                 if (password_verify($User_Typed_Password, $User_Password)) {
 
-                    $_SESSION['User-Id'] = $result['User_Id'];
-                    $_SESSION['Staff-Id'] = $result['staff_staff_id'];
-                    $_SESSION['First-Name'] = $result['Staff_First_Name'];
-                    $_SESSION['Last-Name'] = $result['Staff_Last_Name'];
-                    $_SESSION['Middle-Name'] = $result['Staff_Middle_Name'];
-                    $_SESSION['Contact-Number'] = $result['Staff_Contact_Number'];
-                    $_SESSION['User-Type'] = $result['User_Type'];
-                    $_SESSION['Staff-Type'] = $result['Staff_Type'];
+                    $_SESSION['Admin'] = [
+                        'User-Id' => $result['User_Id'],
+                        'Staff-Id' => $result['staff_staff_id'],
+                        'First-Name' => $result['Staff_First_Name'],
+                        'Last-Name' => $result['Staff_Last_Name'],
+                        'Middle-Name' => $result['Staff_Middle_Name'],
+                        'Contact-Number' => $result['Staff_Contact_Number'],
+                        'User-Type' => $result['User_Type'],
+                        'Staff-Type' => $result['Staff_Type']
+                    ];
                     
                     header("Location: ../adminPages/Admin_Dashboard.php");
                     

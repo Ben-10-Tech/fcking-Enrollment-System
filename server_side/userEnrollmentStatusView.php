@@ -30,8 +30,8 @@ class displayEnrollmentStatus {
     
     public function displayStatus() {
 
-        if(isset($_SESSION['User-Id']) && isset($_GET['id'])) {
-            $userId = $_SESSION['User-Id'];
+        if(isset($_SESSION['User']['User-Id']) && isset($_GET['id'])) {
+            $userId = $_SESSION['User']['User-Id'];
             $enrolleeId = $_GET['id'];
 
             $data = $this->enrollee->getUserStatus($userId, $enrolleeId);

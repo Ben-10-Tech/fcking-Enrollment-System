@@ -181,6 +181,7 @@ body {
 /*----TRANSITIONS----*/
 .sidebar.active {
     width: 20vw; 
+    min-width: 20vw;
     transition: width 0.2s ease-in, opacity 0.15s ease-out;
 }
 
@@ -324,6 +325,12 @@ body {
 /*--END OF HEADER DESIGNS--*/
 /*MEDIA QUERIES*/
 @media (max-width: 1510px) {
+    sidebar.active {
+        min-width: 20vw;
+        font-size: .7em;
+        transition: all .2s ease-out;
+    }
+
     .sidebar {
         font-size: .85em;
     }

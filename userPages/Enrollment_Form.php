@@ -42,11 +42,11 @@
                             <div class="learner-radio">
                                 <p class="dfont">I-check lamang naaangkop</p>
                                 <div class="lrn-radio-buttons-selections">
-                                    <input type="radio" id="No-LRN" name="LRN" value="No-LRN" class="radio">
+                                    <input type="radio" id="No-LRN" name="LRN" value="0" class="radio">
                                     <label for="no-lrn">Walang LRN</label>
-                                    <input type="radio" id="With-LRN" name="LRN" value="With-LRN" class="radio">
+                                    <input type="radio" id="With-LRN" name="LRN" value="1" class="radio">
                                     <label for="with-lrn">Mayroong LRN</label>
-                                    <input type="radio" id="Returning" name="LRN" value="Returning" class="radio">
+                                    <input type="radio" id="Returning" name="LRN" value="2" class="radio">
                                     <label for="returning">Returning (Balik Aral)</label>
                                 </div>
                             </div>
@@ -229,9 +229,9 @@
                                         <p class="dfont">Nabibilang sa katutubong grupo/ <br class="responsive-text-break">
                                                     Komunidad ng Katutubong Kultural</p>
                                         <div>
-                                            <input type="radio" name="group" id="yes" class="radio" value="yes">
+                                            <input type="radio" name="group" id="yes" class="radio" value="1">
                                             <label for="yes">Oo</label>
-                                            <input type="radio" name="group" id="no" class="radio" value="no">
+                                            <input type="radio" name="group" id="no" class="radio" value="0">
                                             <label for="no">Hindi</label>
                                         </div>
                                     </div>
@@ -281,9 +281,9 @@
                         <div class="student-disability-wrapper">
                             <div class="special-needs">
                                 <p class="dfont">Ang mag-aaral ba ay nangangailangan ng espesyal na tulong sa pag-aaral? (e.g ADHD)</p>
-                                <input type="radio" name="sn" id="yes" class="radio" value="0">
+                                <input type="radio" name="sn" id="yes" class="radio" value="1">
                                 <label for="yes">Mayroon</label>
-                                <input type="radio" name="sn" id="no" class="radio" value="1">
+                                <input type="radio" name="sn" id="no" class="radio" value="0">
                                 <label for="no">Wala</label>
                             </div>
 
@@ -296,9 +296,9 @@
                             </div>
                             <div class="assisttech">
                                 <p class="dfont">May nagagamit bang “assistive technology devices” (e.g Braille)</p>
-                                <input type="radio" name="at" id="yes" class="radio" value="0">
+                                <input type="radio" name="at" id="yes" class="radio" value="1">
                                 <label for="yes">Oo</label>
-                                <input type="radio" name="at" id="no" class="radio" value="1">
+                                <input type="radio" name="at" id="no" class="radio" value="0">
                                 <label for="no">Hindi</label>
                             </div>
                             <div class="trueassisttech">

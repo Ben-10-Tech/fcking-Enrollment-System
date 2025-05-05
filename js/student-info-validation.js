@@ -10,6 +10,20 @@ document.addEventListener('DOMContentLoaded', function(){
     const language = document.getElementById("language");
     const religion = document.getElementById("religion");
     const form = document.getElementById("enrollment-form");
+    
+    document.querySelectorAll('input[name="LRN"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            console.log(radio.value);
+            if (radio.value === "0" || radio.value === "2") {
+                lrn.disabled = true;
+                lrn.style.opacity = "0.2";
+                lrn.value ="";
+            } else {
+                lrn.disabled = false;
+                lrn.style.opacity = "1";
+            }
+        })
+    });
     const allInfo = [
         {element: lname, error: "em-lname"},
         {element: fname, error: "em-fname"},
@@ -34,9 +48,10 @@ document.addEventListener('DOMContentLoaded', function(){
     function checkIndigenous(textBoxElement, nameValue ) {
         const radioInput = document.querySelector(`input[name="${nameValue}"]:checked`);
         const textbox = document.getElementById(textBoxElement);
-        if (radioInput.value === "no") {
+        if (radioInput.value === "0") {
             textbox.disabled = true;
             textbox.style.opacity = "0.2";
+            textbox.value ="";
         } else {
             textbox.disabled = false;
             textbox.style.opacity = "1";
@@ -126,6 +141,7 @@ document.addEventListener('DOMContentLoaded', function(){
     //event trigger
     age.addEventListener('change', setBirthYear);
     birthDate.addEventListener('change', getAge);
+
     radioGroups.forEach(({textBoxElement, nameValue})=>{
         document.querySelectorAll(`input[name="${nameValue}"]`).forEach(radio=>{
             radio.addEventListener('change',()=>checkIndigenous(textBoxElement, nameValue));

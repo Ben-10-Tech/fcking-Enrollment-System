@@ -26,13 +26,15 @@ Class VerifyLogin {
                 $User_Typed_Password = trim($User_Typed_Password);
                 if (password_verify($User_Typed_Password, $User_Password)) {
 
-                    $_SESSION['User-Id'] = $result['User_Id'];
-                    $_SESSION['Registration-Id'] = $result['Registration_Id'];
-                    $_SESSION['First-Name'] = $result['First_Name'];
-                    $_SESSION['Last-Name'] = $result['Last_Name'];
-                    $_SESSION['Middle-Name'] = $result['Middle_Name'];
-                    $_SESSION['Contact-Number'] = $result['Contact_Number'];
-                    $_SESSION['User-Type'] = $result['User_Type'];
+                    $_SESSION['User'] = [
+                        'User-Id' => $result['User_Id'],
+                        'Registration-Id' => $result['Registration_Id'],
+                        'First-Name' => $result['First_Name'],
+                        'Last-Name' => $result['Last_Name'],
+                        'Middle-Name' => $result['Middle_Name'],
+                        'Contact-Number' => $result['Contact_Number'],
+                        'User-Type' => $result['User_Type']
+                    ];
                     //replace with change location and add session shit
                     header("Location: ../userPages/User_Enrollees.php");
                     exit();

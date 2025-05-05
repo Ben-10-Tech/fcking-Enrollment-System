@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['User-Id']) || !isset($_SESSION['Staff-Id'])) {
+if (!isset($_SESSION['Admin']['User-Id']) || !isset($_SESSION['Admin']['Staff-Id'])) {
     header("Location: ../client_side/admin_login_form.php");
     exit();
 }
@@ -65,7 +65,7 @@ if (!isset($_SESSION['User-Id']) || !isset($_SESSION['Staff-Id'])) {
                     <button class="enrolls-btn" onclick="enrollsDrop()"><img src="../imgs/chevron-down.svg" class ="bi-chevron-down"></button>
                     <ul class="enrolls-ul">
                         <li>
-                            <a href="" class="pending">Pending</a>
+                            <a href="./Admin_Enrollment_Access.php" class="pending">Pending</a>
                         </li>
                         <li>
                             <a href="" class="toFollow">To Follow-up</a>
@@ -91,17 +91,27 @@ if (!isset($_SESSION['User-Id']) || !isset($_SESSION['Staff-Id'])) {
             <div class="account">
                 <button id="user-profile"><img src="../imgs/check2-circle.svg" alt=""></button>
                 <div class="account-settings-wrapper">
-                    <p class="username">David jearard</p>
-                    <p class="account-type">user</p>
+                    <?php 
+                        if (isset($_SESSION['Admin']['First-Name']) && isset($_SESSION['Admin']['Last-Name']) && $_SESSION['Admin']['User-Type']) {
+                            $userType = "";
+                            echo $_SESSION['Admin']['First-Name'] . " " . $_SESSION['Admin']['Last-Name'];
+                            if ($_SESSION['Admin']['User-Type'] == 1) {
+                                $userType = "Admin";
+                                echo "<p> $userType </p>";
+                            }
+                        } 
+                        else {
+                            echo "User Name";
+                        }
+                    ?>   
                 </div>
                 <div class="account-settings-btn">
                     <button class="account-btn" onclick="accountDrop()"><img src="../imgs/chevron-down-black.svg" id="account-drop" alt=""></button>
                     <div class="account-settings-btn-content-wrapper">
                         <div class="user-info-wrapper border-100sb">
                             <img src="../imgs/check2-circle.svg" alt="">
-                            <div class="user-name">
-                                <p class="username">David jearard</p>
-                                <p class="account-type">user</p>
+                            <div class="user-name"> 
+                            
                             </div>
                         </div>
                         <div class="account-link-wrapper">

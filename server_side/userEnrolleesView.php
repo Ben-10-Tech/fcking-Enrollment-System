@@ -13,8 +13,8 @@ class displayEnrollmentForms {
 
     public function displaySubmittedForms() {
         try {
-            if(isset($_SESSION['User-Id'])) {
-                $id = $_SESSION['User-Id'];
+            if(isset($_SESSION['User']['User-Id'])) {
+                $id = $_SESSION['User']['User-Id'];
     
                 $data = $this->enrollee->getUserEnrollees($id);
                 foreach($data as $rows) {
