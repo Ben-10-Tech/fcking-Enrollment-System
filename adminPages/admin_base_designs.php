@@ -123,5 +123,7 @@ if (!isset($_SESSION['Admin']['User-Id']) || !isset($_SESSION['Admin']['Staff-Id
             </div>
         </div>
         <!--END OF HEADER-->
+
 </body>
 </html>
+

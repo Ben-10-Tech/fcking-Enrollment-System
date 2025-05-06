@@ -86,38 +86,12 @@
                             <th>LRN</th>
                             <th>Name</th>
                             <th>Level</th>
-                            <th>Contact Number</th>
                         </tr>
-                        <tr>
-                            <td># 33595868798</td>
-                            <td>Lovely Jane Dela Cruz</td>
-                            <td>4</td>
-                            <td># 0991209977</td>
-                        </tr>
-                        <tr>
-                            <td># 33595868798</td>
-                            <td>Kenneth Jeffrey Alojado</td>
-                            <td>3</td>
-                            <td># 0991209977</td>
-                        </tr>
-                        <tr>
-                            <td># 33859350393</td>
-                            <td>Nemesio Benedict Llorin</td>
-                            <td>5</td>
-                            <td># 0991209977</td>
-                        </tr>
-                        <tr>
-                            <td># 332113384993</td>
-                            <td>Jearard David</td>
-                            <td>6</td>
-                            <td># 093120808</td>
-                        </tr>
-                        <tr>
-                            <td># 33859350393</td>
-                            <td>Chong Tae</td>
-                            <td>6</td>
-                            <td># 0991209977</td>
-                        </tr>
+                        <?php
+                            include_once '../server_side/DashboardView.php';
+                            $dashboard = new DashboardView();
+                            $dashboard->displayPendingEnrolleesInformation();
+                        ?>
                     </table>
                 </div>
                 <!--Post Announcments BIG-->
