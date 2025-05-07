@@ -1,0 +1,72 @@
+body {
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h2 {
+    color: #000000;
+    font-family: "Baloo-Thambi-2";
+    font-size: 1.8em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.bg-image {
+    background-image: url('../imgs/student.jpg'); /* <-- Set your background image here */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 25em;
+    height: 19em;
+}
+
+input {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 10px 18px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    height: 3.5em;
+    width: 92%;
+    padding: 10px;
+    background: #0765c3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 16px 0px 4px 21px;
+    transform: translateY(-2px);
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    background: #003366;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    border-bottom: solid 3px  #01203f;
+}
