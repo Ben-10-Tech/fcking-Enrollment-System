@@ -30,6 +30,8 @@ h2 {
     align-items: center;
 }
 
+
+
 .form {
     background: white;
     display: flex;
@@ -68,7 +70,22 @@ button {
     font-weight: bold;
     transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
+.login-back {
+    text-decoration: none;
+    position: relative;
+    left: 75%;
+    height: 3.5em;
+    width: 92%;
+    padding: 10px;
+    background: #0765c3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transform: translateY(-2px);
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 
+}
 button:hover {
     background: #003366;
     transform: translateY(-2px);

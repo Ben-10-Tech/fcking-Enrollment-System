@@ -56,6 +56,8 @@ if (isset($_SESSION['User-Id']) && isset($_SESSION['Registration-Id'])) {
                     <button type="submit">
                         Submit
                     </button>
+
+                    <a class ="admin-login-button" href="admin_login_form.php">Login as Teacher</a>
                 </div>
             </form>
         </div>

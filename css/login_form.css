@@ -106,15 +106,23 @@ body {
 button {
     padding: 15px;
     border-radius: 78px;
-    margin: 4.1em 13em 1.3em 13em;
     color: white;
+    margin: 2em 2em 2em 2em;
     cursor: pointer;
     background-color: #E1A23C;
     width: 12em;
     font-size: 1em;
 }
 
-
+.admin-login-button {
+    padding: 15px;
+    border-radius: 78px;
+    color: white;
+    cursor: pointer;
+    background-color: #E1A23C;
+    width: 12em;
+    font-size: 1em;
+}
 .wrap {
     display: flex;
     justify-content: center;
