@@ -24,20 +24,8 @@ document.addEventListener("DOMContentLoaded", function() {
             if (data.success) {
                 alert(data.message);
                 form.reset();
-            } else {
-                switch(data.error) {
-                    case 'duplicate_entry':
-                        alert('This contact number is already registered. Please use a different number.');
-                        break;
-                    case 'database':
-                        alert('Database Error: ' + data.message);
-                        break;
-                    case 'sms_error':
-                        alert('Registration successful but failed to send password: ' + data.message);
-                        break;
-                    default:
-                        alert(data.message);
-                }
+            } else if (!data.success){
+                alert(data.message);
             }
         })
         .catch(error => {

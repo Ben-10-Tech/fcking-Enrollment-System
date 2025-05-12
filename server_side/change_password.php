@@ -42,7 +42,7 @@ class ChangePassword {
                         
                         else {
                             return  [
-                                'sucess' => false,
+                                'success' => false,
                                 'message' => 'Failed to change password.'
                             ];
                         }
@@ -114,7 +114,7 @@ class ChangePassword {
                         
                         else {
                             return  [
-                                'sucess' => false,
+                                'success' => false,
                                 'message' => 'Failed to change password.'
                             ];
                         }
