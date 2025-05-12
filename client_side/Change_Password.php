@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/Change_Password.css">
-    <script src="../js/chhange-password.js"></script>
+    <script src="../js/change-password.js"></script>
 </head>
 <body>
     <div class="main-container">
