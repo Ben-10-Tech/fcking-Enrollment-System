@@ -42,23 +42,28 @@ Class VerifyLogin {
                         'Staff-Id' => $result['staff_staff_id'],
                         'First-Name' => $result['Staff_First_Name'],
                         'Last-Name' => $result['Staff_Last_Name'],
-                        'Middle-Name' => $result['Staff_Middle_Name'],
                         'Contact-Number' => $result['Staff_Contact_Number'],
                         'User-Type' => $result['User_Type'],
                         'Staff-Type' => $result['Staff_Type']
                     ];
-                    
-                    header("Location: ../adminPages/Admin_Dashboard.php");
-                    
+                    return [
+                        'success' => true,
+                        'message' => 'Login successful.',
+                    ];
                     exit();
                 }
                 
                 else {
-                    //should still input an alert for the user to know the password was invalid
-                    echo "Invalid password.";
+                    return [
+                        'success' => false,
+                        'message' => 'Incorrect Password.',
+                    ];
                 }
             } else {
-                echo "User not found.";
+                return [
+                    'success' => false,
+                    'message' => 'User not found.',
+                ];
             }
         }
     }

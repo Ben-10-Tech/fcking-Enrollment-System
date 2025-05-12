@@ -1,12 +1,3 @@
-<?php
-session_start();
-if (isset($_SESSION['User-Id']) && isset($_SESSION['Registration-Id'])) {
-    header("Location: ../userPages/User_Enrollees.php");
-    exit();
-}
-?>
-
-
 <!DOCTYPE html>
 <html>
 
@@ -17,7 +8,7 @@ if (isset($_SESSION['User-Id']) && isset($_SESSION['Registration-Id'])) {
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/login_form.css">
     <link rel="stylesheet" href="../css/fonts.css">
-    <script src="../js/registration.js"></script> 
+    <script src="../js/login-validation.js"></script> 
 </head>
 
 <body>  
@@ -43,7 +34,7 @@ if (isset($_SESSION['User-Id']) && isset($_SESSION['Registration-Id'])) {
             <div class="error-msg">
                 <span class="em-login"> Error Message Here </span>
             </div>
-           <form action="../server_side/post_login_verify.php" method="post">
+           <form id="login-form" action="../server_side/post_login_verify.php" method="post">
                <div class="box">
                    <BR>
                    <label for="phone_number" style="color: white;  font-family: Baloo-Thambi-2;  font-size: .8em;" > Phone Number</label>
@@ -54,7 +45,7 @@ if (isset($_SESSION['User-Id']) && isset($_SESSION['Registration-Id'])) {
                 </div>
                 <div class="wrap">
                     <button type="submit">
-                        Submit
+                        Log In
                     </button>
 
                     <a class ="admin-login-button" href="admin_login_form.php">Login as Teacher</a>

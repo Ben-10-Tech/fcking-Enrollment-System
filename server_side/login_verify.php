@@ -35,17 +35,26 @@ Class VerifyLogin {
                         'Contact-Number' => $result['Contact_Number'],
                         'User-Type' => $result['User_Type']
                     ];
-                    //replace with change location and add session shit
-                    header("Location: ../userPages/User_Enrollees.php");
+
+                    return [
+                        'success' => true,
+                        'message' => 'Login successful.',
+                    ];
+                    
                     exit();
                 }
                 
                 else {
-                    //should still input an alert for the user to know the password was invalid
-                    echo "Invalid password.";
+                    return [
+                        'success' => false,
+                        'message' => 'Incorrect Password.',
+                    ];
                 }
             } else {
-                echo "User not found.";
+                return [
+                    'success' => false,
+                    'message' => 'User not found.',
+                ];
             }
         }
     }

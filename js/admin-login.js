@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const form = document.getElementById("login-form");
+    const form = document.getElementById("admin-login-form");
     
     form.addEventListener("submit", function(event) {
         event.preventDefault();
         
         const formData = new FormData(form);
         
-        fetch("../server_side/post_login_verify.php", {
+        fetch("../server_side/post_admin_login.php", {
             method: "POST", 
             body: formData,
         })
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(data => {
             if (data.success) {
                 form.reset();
-                window.location.href = " ../userPages/User_Enrollees.php";
+                window.location.href = " ../adminPages/Admin_Dashboard.php";
             } else if (!data.success){
                 alert(data.message);
             }
