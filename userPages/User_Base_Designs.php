@@ -103,12 +103,11 @@ if (!isset($_SESSION['User']['User-Id']) || !isset($_SESSION['User']['Registrati
             </div>
 
             <div class="account">
-                <button id="user-profile"><img src="../imgs/check2-circle.svg" alt=""></button>
                 <div class="account-settings-wrapper">
                     <?php
                         if (isset($_SESSION['User']) && isset($_SESSION['User']['First-Name']) && isset($_SESSION['User']['Last-Name']) && isset($_SESSION['User']['User-Type'])) {
                             $name = $_SESSION['User']['First-Name'] . ", " . $_SESSION['User']['Last-Name'];
-                            $userType = $_SESSION['User']['User-Type'] == 0 ? "User" : "Unknown";
+                            $userType = $_SESSION['User']['User-Type'] == 4 ? "User" : "Unknown";
                             echo "<p class='username'> $name </p>";
                             echo "<p> $userType </p>";
                         }

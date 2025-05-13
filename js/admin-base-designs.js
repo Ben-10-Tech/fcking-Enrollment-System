@@ -44,6 +44,11 @@ function enrollsDrop()
     }
 }
 
+function accountDrop() {
+    var account = document.querySelector('.account-settings-btn-content-wrapper');
+    account.classList.toggle('show');
+}
+
 /* function accountDrop() {
     var account = document.querySelector('.account-settings-btn-content-wrapper');
     account.classList.toggle('show');

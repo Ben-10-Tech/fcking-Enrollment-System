@@ -84,12 +84,15 @@ if (!isset($_SESSION['Admin']['User-Id']) || !isset($_SESSION['Admin']['Staff-Id
                     Welcome to South II Student Information System
                 </p>
             </div>
-        
+
+            <!-- Searchbar function if kakayanin -->
+            <!--         
             <div class="searchbox-wrapper">
                 <input type="search" name="" id="" class="searchbox" placeholder="Search here..">
-            </div>
+            </div> -->
+            
+
             <div class="account">
-                <button id="user-profile"><img src="../imgs/check2-circle.svg" alt=""></button>
                 <div class="account-settings-wrapper">
                     <?php 
                         if (isset($_SESSION['Admin']['First-Name']) && isset($_SESSION['Admin']['Last-Name']) && $_SESSION['Admin']['User-Type']) {
@@ -110,13 +113,18 @@ if (!isset($_SESSION['Admin']['User-Id']) || !isset($_SESSION['Admin']['Staff-Id
                     <div class="account-settings-btn-content-wrapper">
                         <div class="user-info-wrapper border-100sb">
                             <img src="../imgs/check2-circle.svg" alt="">
-                            <div class="user-name"> 
-                            
+                            <div class="user-name">
+                                <p class="account-type">User</p>
                             </div>
                         </div>
                         <div class="account-link-wrapper">
-                            <a href=""><img src="" alt="">Edit Profile</a><br>
-                            <a href=""><img src="" alt="">Update Password</a>
+                            <!-- <a href=""><img src="" alt="">Edit Profile</a><br> -->
+                            <a href="../../fcking-enrollment-system/client_side/Change_Password.php"><img src="../imgs/lock-solid.svg" class="change-pass-icon" alt=""></a>
+                            <a href="../../fcking-enrollment-system/client_side/Change_Password.php" class="update-password">Update Password</a><br>
+                        </div>
+                        <div class="account-logout-wrapper">
+                            <a href="../../fcking-enrollment-system/server_side/logout.php" id="logout"><img src="../imgs/logout.svg" class="logout-icon" alt=""></a>
+                            <a href="../../fcking-enrollment-system/server_side/logout.php" class="logout-text">Logout</a>
                         </div>
                     </div>
                 </div>

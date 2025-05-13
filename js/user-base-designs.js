@@ -46,7 +46,7 @@ function teachersdrop()
 function accountDrop() {
     var account = document.querySelector('.account-settings-btn-content-wrapper');
     account.classList.toggle('show');
-    }
+}
 
     // Close the dropdown if the user clicks outside of it
     //di pa nagana
@@ -63,6 +63,7 @@ function accountDrop() {
         }
     }
 }*/
+
 /*MOBILE SIDEBAR ANIMATIONS*/
 document.addEventListener('DOMContentLoaded', function() {
     var sidebar = document.querySelector('.mobile-sidebar-wrapper');
