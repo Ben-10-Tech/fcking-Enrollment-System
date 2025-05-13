@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="bg-image">
+    <div class="blurred-background"></div>
         <div class="form">
             <form class="overlay-form" method="POST" action="../server_side/post_admin_login.php">
                 <h2 style="text-align: center;">Admin LogIn</h2>

@@ -3,26 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Staff Registration</title>
+    <link rel="stylesheet" href="../css/Staff_Registration.css">
+    <link rel="stylesheet" href="../css/fonts.css">
 </head>
 <body>
-    <h2>Register New Staff</h2>
-    <form action="../server_side/post_staff_registration.php" method="POST">
-        <label for="Staff_First_Name">First Name:</label><br>
-        <input type="text" name="Staff_First_Name" id="Staff_First_Name" required><br><br>
+    <div class="bg-image">
+    <div class="blurred-background"></div>
+        <div class="form">
+            <h2 style="text-align: center;">Register New Staff</h2>
+        <form class="overlay-form" action="../server_side/post_staff_registration.php" method="POST">
 
-        <label for="Staff_Middle_Name">Middle Name:</label><br>
-        <input type="text" name="Staff_Middle_Name" id="Staff_Middle_Name"><br><br>
+            <input type="text" name="Staff_First_Name" id="Staff_First_Name" placeholder="First Name" required><br><br>
 
-        <label for="Staff_Last_Name">Last Name:</label><br>
-        <input type="text" name="Staff_Last_Name" id="Staff_Last_Name" required><br><br>
+            <input type="text" name="Staff_Middle_Name" id="Staff_Middle_Name" placeholder="Middle Name" ><br><br>
 
-        <label for="Staff_Email">Email:</label><br>
-        <input type="email" name="Staff_Email" id="Staff_Email" required><br><br>
+            <input type="text" name="Staff_Last_Name" id="Staff_Last_Name" placeholder="Last Name"  required><br><br>
 
-        <label for="Staff_Contact_Number">Contact Number:</label><br>
-        <input type="text" name="Staff_Contact_Number" id="Staff_Contact_Number" required><br><br>
+            <input type="email" name="Staff_Email" id="Staff_Email" placeholder="Email Address"  required><br><br>
 
-        <input type="submit" value="Register Staff">
-    </form>
+            <input type="text" name="Staff_Contact_Number" id="Staff_Contact_Number"  placeholder="Contact Number" required><br><br>
+
+            <button type="submit" value="Register Staff">Register</button><br><br>
+            
+        </form>
+    </div>
 </body>
-</html>
+</html> 
