@@ -120,13 +120,17 @@ if (!isset($_SESSION['User']['User-Id']) || !isset($_SESSION['User']['Registrati
                         <div class="user-info-wrapper border-100sb">
                             <img src="../imgs/check2-circle.svg" alt="">
                             <div class="user-name">
-                                <p class="account-type">user</p>
+                                <p class="account-type">User</p>
                             </div>
                         </div>
                         <div class="account-link-wrapper">
                             <!-- <a href=""><img src="" alt="">Edit Profile</a><br> -->
-                            <a href="../../fcking-enrollment-system/client_side/Change_Password.php"><img src="" alt="">Update Password</a><br>
-                            <a href="../../fcking-enrollment-system/server_side/logout.php" id="logout">Logout</a>
+                            <a href="../../fcking-enrollment-system/client_side/Change_Password.php"><img src="../imgs/lock-solid.svg" class="change-pass-icon" alt=""></a>
+                            <a href="../../fcking-enrollment-system/client_side/Change_Password.php" class="update-password">Update Password</a><br>
+                        </div>
+                        <div class="account-logout-wrapper">
+                            <a href="../../fcking-enrollment-system/server_side/logout.php" id="logout"><img src="../imgs/logout.svg" class="logout-icon" alt=""></a>
+                            <a href="../../fcking-enrollment-system/server_side/logout.php" class="logout-text">Logout</a>
                         </div>
                     </div>
                 </div>
