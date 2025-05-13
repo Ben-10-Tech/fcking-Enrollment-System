@@ -117,6 +117,11 @@ if (!isset($_SESSION['Admin']['User-Id']) || !isset($_SESSION['Admin']['Staff-Id
                                 <p class="account-type">User</p>
                             </div>
                         </div>
+                        <div class="account-edit-info-wrapper">
+                            <a href=""><img src="../imgs/edit-information.svg" class="edit-info-icon" alt="" ></a>
+                            <a href="" class="edit-info-text">Edit Profile</a>
+                        </div>  
+
                         <div class="account-link-wrapper">
                             <!-- <a href=""><img src="" alt="">Edit Profile</a><br> -->
                             <a href="../../fcking-enrollment-system/client_side/Change_Password.php"><img src="../imgs/lock-solid.svg" class="change-pass-icon" alt=""></a>
