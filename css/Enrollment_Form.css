@@ -8,11 +8,17 @@
 }
 .content {
     margin-top: 1em;
-    padding-left:5vw;
     font-family: "Barlow";
     font-weight: 450;
     font-size: 1em;
     width: 95%;
+    margin-left: 2.5em;
+}
+
+.content {
+    width: 90vw;
+    height: 100%;
+    background-color: white;
 }
 
 .content-title {
