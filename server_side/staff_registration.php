@@ -12,9 +12,10 @@ class StaffRegistration {
     }
     
     public function staffInformation($Staff_First_Name, $Staff_Middle_Name, $Staff_Last_Name, $Staff_Email, $Staff_Contact_Number, $Staff_Status, $Staff_Type) {
+        $sql_insert_staff_info = "INSERT INTO staffs(Staff_First_Name, Staff_Middle_Name, Staff_Last_Name, Staff_Email, Staff_Contact_Number, Staff_Status, Staff_Type) 
+                                VALUES (:Staff_First_Name, :Staff_Middle_Name, :Staff_Last_Name, :Staff_Email, :Staff_Contact_Number, :Staff_Status, :Staff_Type)";
+        
         try {
-            $sql_insert_staff_info = "INSERT INTO staffs(Staff_First_Name, Staff_Middle_Name, Staff_Last_Name, Staff_Email, Staff_Contact_Number, Staff_Status, Staff_Type) 
-                                    VALUES (:Staff_First_Name, :Staff_Middle_Name, :Staff_Last_Name, :Staff_Email, :Staff_Contact_Number, :Staff_Status, :Staff_Type)";
             $insert_staff_info = $this->conn->prepare($sql_insert_staff_info);
             $insert_staff_info->bindParam(':Staff_First_Name', $Staff_First_Name);
             $insert_staff_info->bindParam(':Staff_Middle_Name', $Staff_Middle_Name);
@@ -23,16 +24,15 @@ class StaffRegistration {
             $insert_staff_info->bindParam(':Staff_Contact_Number', $Staff_Contact_Number);
             $insert_staff_info->bindParam(':Staff_Status', $Staff_Status);
             $insert_staff_info->bindParam(':Staff_Type', $Staff_Type);
+
             if ($insert_staff_info->execute()) {
-                echo 'Registration Successful';
                 return $this->conn->lastInsertId();
+            } else {
+                throw new PDOException('Staff information insert failed.');
             }
-            else {
-                echo 'Registration Failed';
-            }
-        }
-        catch (PDOException $e) {
-            echo 'Error: ' . $e->getMessage();
+        } catch (PDOException $e) {
+            // Throw the exception to let registerStaff handle it
+            throw $e;
         }
     }
 
@@ -40,42 +40,50 @@ class StaffRegistration {
         try {
             $this->conn->beginTransaction();
 
+            // Call staffInformation() inside the transaction
             $Staff_Id = $this->staffInformation($Staff_First_Name, $Staff_Middle_Name, $Staff_Last_Name, $Staff_Email, $Staff_Contact_Number, $Staff_Status, $Staff_Type);
+
+            // Generate password
             $password = $this->generatePassword();
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-
+            // Insert into users table
             $sql_insert_staff_users = "INSERT INTO users(Password, User_Type, Staff_Id) 
-                                        VALUES (:Password, :User_Type, :Staff_Id)";
+                                    VALUES (:Password, :User_Type, :Staff_Id)";
             $insert_staff_users = $this->conn->prepare($sql_insert_staff_users);
             $insert_staff_users->bindParam(':Password', $hashed_password);
             $insert_staff_users->bindParam(':User_Type', $Staff_Type);
             $insert_staff_users->bindParam(':Staff_Id', $Staff_Id);
-            
 
-            if ($insert_staff_users->execute()) {
-                echo 'Registration Successful';
-            }
-            else {
+            if (!$insert_staff_users->execute()) {
+                // Rollback the transaction if the insert into users fails
                 $this->conn->rollBack();
-                echo 'Registration Failed';
+                echo 'Registration Failed (Users Insert)';
+                return;
             }
 
+            // Send password
             try {
                 $send_password = new SendPassword();
                 $send_password->send_password($Staff_Last_Name, $Staff_First_Name, $Staff_Middle_Name, $Staff_Contact_Number, $password);
-            }
-            catch (Exception $e) {
+            } catch (Exception $e) {
                 $this->conn->rollBack();
                 echo 'Failed to send password: ' . $e->getMessage();
+                return;
             }
 
+            // Commit the transaction if everything is successful
             $this->conn->commit();
-        }
-
-        catch (PDOException $e) {
+            echo 'Registration Successful';
+        } catch (PDOException $e) {
             $this->conn->rollBack();
-            echo 'Error: ' . $e->getMessage();
+
+            // Handle duplicate entry error specifically
+            if ($e->errorInfo[1] == 1062) {
+                echo 'Registration failed: The number you entered is already registered';
+            } else {
+                echo 'Error: ' . $e->getMessage();
+            }
         }
     }
 
@@ -87,6 +95,7 @@ class StaffRegistration {
         }
         return $password;
     }
+    
 }
 ?>
 

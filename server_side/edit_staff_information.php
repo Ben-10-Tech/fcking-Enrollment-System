@@ -1,4 +1,107 @@
 <?php
-    
+    require_once __DIR__ . '/../server_side/dbconnection.php';
+    session_start();
 
+    class EditInformation {
+        protected $conn;
+        private $Staff_Id;
+    
+        //automatically run and connect database
+        public function __construct() {
+            $db = new Connect();
+            $this->conn = $db->getConnection();
+            $this->Staff_Id = $_SESSION['Admin']['Staff-Id'];
+        }
+
+        public function Has_Address_Id() {
+            //1. Check if the teacher already has Address_Id
+            $sql_check_address = "SELECT Staff_Address_Id FROM `staffs` WHERE Staff_Id = :Staff_Id AND Staff_Id IS NOT NULL";
+            $check_address = $this->conn->prepare($sql_check_address);
+            $check_address->bindparam(':Staff_Id', $this->Staff_Id);
+            $check_address->execute();
+            $result = $check_address->fetch(PDO::FETCH_ASSOC);
+
+            //2. If the teacher has Address_Id, return true, else return false
+            return $result ? true : false;
+        }
+
+        public function Has_Identifiers_Id() {
+            //1. Check if the teacher already has Identifiers_Id
+            $sql_check_identifiers = "SELECT Staff_Identifier_Id FROM `staffs` WHERE Staff_Id = :Staff_Id AND Staff_Identifier_Id IS NOT NULL";
+            $check_identifiers = $this->conn->prepare($sql_check_identifiers);
+            $check_identifiers->bindparam(':Staff_Id', $this->Staff_Id);
+            $check_identifiers->execute();
+            $result = $check_identifiers->fetch(PDO::FETCH_ASSOC);
+
+            //2. If the teacher has Identifiers_Id, return true, else return false
+            return $result ? true : false;
+        }
+
+        public function Update_Address($House_Number, $Subd_Name, $Brgy_Name, $Municipality_Name, $Province_Name, $Region) {
+            //1. Check if the teacher already has Address_Id
+            //2. If the teacher has Address_Id, update the address
+            if($this->Has_Address_Id()) {
+                $sql_get_address_id = "SELECT Staff_Address_Id FROM `staffs` WHERE Staff_Id = :Staff_Id";
+                $get_address_id = $this->conn->prepare($sql_get_address_id);
+                $get_address_id->bindparam(':Staff_Id', $this->Staff_Id);
+                $get_address_id->execute();
+                $result = $get_address_id->fetch(PDO::FETCH_ASSOC);
+                $address_id = $result['Staff_Address_Id'];
+
+                $sql_update_address = "UPDATE staff_address
+                                        SET House_Number = :House_Number,
+                                            Subd_Name = :Subd_Name,
+                                            Brgy_Name = :Brgy_Name,
+                                            Municipality_Name = :Municipality_Name,
+                                            Province_Name = :Province_Name,
+                                            Region = :Region
+                                        WHERE Staff_Address_Id = :Staff_Address_Id";
+                                        
+                $update_address = $this->conn->prepare($sql_update_address);
+                $update_address->bindparam(':House_Number', $House_Number);
+                $update_address->bindparam(':Subd_Name', $Subd_Name);
+                $update_address->bindparam(':Brgy_Name', $Brgy_Name);
+                $update_address->bindparam(':Municipality_Name', $Municipality_Name);
+                $update_address->bindparam(':Province_Name', $Province_Name);
+                $update_address->bindparam(':Region', $Region);
+                $update_address->bindparam(':Staff_Address_Id', $address_id);
+                if($update_address->execute()) {
+                    echo $address_id;
+                } else {
+                    echo 'Error updating address';
+                }
+            }
+
+            //3. If the teacher doesn't have Address_Id, insert the address and get the Address_Id
+            else {
+                $sql_insert_address = "INSERT INTO staff_address(House_Number, Subd_Name, Brgy_Name, Municipality_Name, Province_Name, Region) 
+                                        VALUES (:House_Number, :Subd_Name, :Brgy_Name, :Municipality_Name, :Province_Name, :Region)";
+                $insert_address = $this->conn->prepare($sql_insert_address);
+                $insert_address->bindparam(':House_Number', $House_Number);
+                $insert_address->bindparam(':Subd_Name', $Subd_Name);
+                $insert_address->bindparam(':Brgy_Name', $Brgy_Name);
+                $insert_address->bindparam(':Municipality_Name', $Municipality_Name);
+                $insert_address->bindparam(':Province_Name', $Province_Name);
+                $insert_address->bindparam(':Region', $Region);
+
+                if($insert_address->execute()) {
+                    echo $this->conn->lastInsertId();
+                } else {
+                    return 'Error inserting address';
+                }
+            }
+        }
+
+        public function Update_Identifiers(){
+            //1. Check if the teacher already has Identifiers_Id
+            //2 If the teacher has Identifiers_Id, update the identifiers
+            //3. If the teacher doesn't have Identifiers_Id, insert the identifiers and get the Identifiers_Id
+            //4. Return last inserted id
+        }
+
+        //MAIN FUNCTION!!!!
+        public function Update_Information(){
+
+        }   
+    }
 ?> 
