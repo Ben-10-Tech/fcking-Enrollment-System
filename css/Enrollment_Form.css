@@ -269,5 +269,18 @@ label{
     border-right :rgba(0, 51, 102, 0.7) 1px solid;
 }
 
-/*----END OF MAIN CONTENT----*/
+.submit-button {
+    cursor: pointer;
+    height: 2.5em;
+    width: 5em;
+    border-radius: .8em;
+    background-color: #0cff04;
+    padding-left: 4%;
+    box-shadow: 1px 1px 1px 1px #059200;
+}
 
+.submit-button:hover {
+    background-color: #059200;
+    color: rgb(217, 250, 231)
+}
+/*----END OF MAIN CONTENT----*/

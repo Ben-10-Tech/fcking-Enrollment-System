@@ -526,7 +526,7 @@
                             <p class="dfont">Ipasa ang malinaw na larawan ng mga Dokumento gaya ng <b>PSA BIRTH CERTIFICATE at REPORT CARD.<b></p>
                             <input type="file" name="psa-image" value="Insert Image (Di pa nagana)"> 
                         </div>
-                        <button type="submit" style="border: 1px black solid; cursor: pointer;">Submit</button>
+                        <button type="submit" class="submit-button" >Submit</button>
                     </div>
                 </form>
             </div>
