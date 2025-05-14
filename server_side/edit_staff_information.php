@@ -92,16 +92,101 @@
             }
         }
 
-        public function Update_Identifiers(){
+        public function Update_Identifiers($Employee_Number, $Philhealth_Number, $TIN){
             //1. Check if the teacher already has Identifiers_Id
             //2 If the teacher has Identifiers_Id, update the identifiers
+            if($this->Has_Identifiers_Id()) {
+                $sql_get_identifiers_id = "SELECT Staff_Identifier_Id FROM `staffs` WHERE Staff_Id = :Staff_Id";
+                $get_identifiers_id = $this->conn->prepare($sql_get_identifiers_id);
+                $get_identifiers_id->bindparam(':Staff_Id', $this->Staff_Id);
+                $get_identifiers_id->execute();
+                $result = $get_identifiers_id->fetch(PDO::FETCH_ASSOC);
+                $Identifier_Id = $result['Staff_Identifier_Id'];
+
+                $sql_update_identifiers_id = "UPDATE staff_Identifiers SET 
+                                            Employee_Number= :Employee_Number,
+                                            Philhealth_Number=:Philhealth_Number,
+                                            TIN= :TIN 
+                                            WHERE Staff_Identifier_Id = :Staff_Identifier_Id";
+                $update_identifiers = $this->conn->prepare($sql_update_identifiers_id);
+                $update_identifiers->bindparam(':Employee_Number', $Employee_Number);
+                $update_identifiers->bindparam(':Philhealth_Number', $Philhealth_Number);
+                $update_identifiers->bindparam(':TIN', $TIN);
+                $update_identifiers->bindparam(':Staff_Identifier_Id', $Identifier_Id);
+                if($update_identifiers->execute()) {
+                    echo $Identifier_Id;
+                } else {
+                    return 'Error updating identifiers';
+                }
+            }
+
             //3. If the teacher doesn't have Identifiers_Id, insert the identifiers and get the Identifiers_Id
+            else {
+                $sql_insert_identifiers = "INSERT INTO staff_Identifiers
+                                            (Employee_Number, Philhealth_Number, TIN) 
+                                            VALUES (:Employee_Number, :Philhealth_Number, :TIN)";
+                $insert_identifiers = $this->conn->prepare($sql_insert_identifiers);
+                $insert_identifiers->bindparam(':Employee_Number', $Employee_Number);
+                $insert_identifiers->bindparam(':Philhealth_Number', $Philhealth_Number);
+                $insert_identifiers->bindparam(':TIN', $TIN);
+
+                if($insert_identifiers->execute()) {
+                    $Identifier_Id_Insert = $this->conn->lastInsertId();
+                    $sql_update_staff = "UPDATE staffs SET Staff_Identifier_Id = :Staff_Identifier_Id WHERE Staff_Id = :Staff_Id";
+                    $update_staff = $this->conn->prepare($sql_update_staff);
+                    $update_staff->bindparam(':Staff_Identifier_Id', $Identifier_Id_Insert);
+                    $update_staff->bindparam(':Staff_Id', $this->Staff_Id);
+                    if($update_staff->execute()) {
+                        echo $Identifier_Id_Insert;
+                    } else {
+                        return 'Error updating staff with identifier id';
+                    }
+                } 
+                
+                else {
+                    return 'Error inserting identifiers';
+                }
+            }
             //4. Return last inserted id
         }
 
         //MAIN FUNCTION!!!!
-        public function Update_Information(){
+        public function Update_Information($Staff_First_Name, $Staff_Middle_Name, $Staff_Last_Name, $Staff_Email, $Staff_Contact_Number){
+            try {
+                // Check if the new contact number already exists for another staff
+                $sql_check = "SELECT Staff_Id FROM staffs WHERE Staff_Contact_Number = :Staff_Contact_Number AND Staff_Id != :Staff_Id";
+                $check_stmt = $this->conn->prepare($sql_check);
+                $check_stmt->bindParam(':Staff_Contact_Number', $Staff_Contact_Number);
+                $check_stmt->bindParam(':Staff_Id', $Staff_Id);
+                $check_stmt->execute();
+        
+                if ($check_stmt->rowCount() > 0) {
+                    echo "Update failed: This contact number is already registered to another staff member.";
+                    return;
+                }
 
+                $sql_update_information = "UPDATE staffs SET
+                                            Staff_First_Name = :Staff_First_Name ,
+                                            Staff_Middle_Name = :Staff_Middle_Name,
+                                            Staff_Last_Name = :Staff_Last_Name ,
+                                            Staff_Email = :Staff_Email,
+                                            Staff_Contact_Number = :Staff_Contact_Number
+                                            WHERE Staff_Id = :Staff_Id";
+                $update_information = $this->conn->prepare($sql_update_information);
+                $update_information->bindparam(':Staff_Id', $this->Staff_Id);
+                $update_information->bindparam(':Staff_First_Name', $Staff_First_Name);
+                $update_information->bindparam(':Staff_Middle_Name', $Staff_Middle_Name);
+                $update_information->bindparam(':Staff_Last_Name', $Staff_Last_Name);
+                $update_information->bindparam(':Staff_Email', $Staff_Email);
+                $update_information->bindparam(':Staff_Contact_Number', $Staff_Contact_Number);
+                if($update_information->execute()) {
+                    echo "Information updated successfully";
+                } else {
+                    echo "Error updating information";
+                }
+            } catch (PDOException $e) {
+                echo "Error: " . $e->getMessage();
+            }
         }   
     }
 ?> 

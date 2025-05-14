@@ -7,7 +7,7 @@ if (!isset($_SESSION['Admin']['User-Id']) || !isset($_SESSION['Admin']['Staff-Id
 }
 ?>
 
-<link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/admin_base_designs.css">
     <link rel="stylesheet" href="../css/reset.css">
     <script src="../js/admin-base-designs.js"></script>
@@ -118,8 +118,8 @@ if (!isset($_SESSION['Admin']['User-Id']) || !isset($_SESSION['Admin']['Staff-Id
                             </div>
                         </div>
                         <div class="account-edit-info-wrapper">
-                            <a href=""><img src="../imgs/edit-information.svg" class="edit-info-icon" alt="" ></a>
-                            <a href="" class="edit-info-text">Edit Profile</a>
+                            <a href="../adminPages/edit_information_links.php"><img src="../imgs/edit-information.svg" class="edit-info-icon" alt="" ></a>
+                            <a href="../adminPages/edit_information_links.php" class="edit-info-text">Edit Profile</a>
                         </div>  
 
                         <div class="account-link-wrapper">

@@ -1,0 +1,23 @@
+.content {
+    min-height: 95vh;
+}
+
+.card {
+    height: 10vh;
+    border: solid black 1px;
+    margin:  2em;
+    border-radius: 1.5em;
+    cursor: default;
+}
+
+.card a {
+    font-family: 'Barlow';
+    color: #073f88;
+    font-weight: bolder;
+    margin: auto 2em;
+}
+
+.card a:hover {
+    color: #327ee2;
+    cursor: pointer;
+}

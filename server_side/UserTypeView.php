@@ -8,14 +8,14 @@ class UserTypeView {
     }
     private function display() {
         $userType = "";
-        if (isset($_SESSION['User']['User-Type'])  && $_SESSION['User']['User-Type'] == 4) {
+        if (isset($_SESSION['User']['User-Type'])  && $_SESSION['User']['User-Type'] == 3) {
             $userType = "User";
         }
-        else if(isset($_SESSION['Admin']['User-Type']) && $_SESSION['Admin']['User-Type'] == 1) {
-            $userType = "Admin";
+        else if(isset($_SESSION['Admin']['User-Type']) && $_SESSION['Admin']['User-Type'] == 2) {
+            $userType = "Teacher";
         }
         else  {
-            $userType = "Teacher";
+            $userType = "Admin";
         }
         if (!empty($userType)) {
             echo "<p> $userType</p>";
