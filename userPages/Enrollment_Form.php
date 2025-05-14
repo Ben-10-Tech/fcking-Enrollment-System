@@ -57,26 +57,17 @@
 
                                 <p class="dfont">Baitang na nais ipatala</p>
                                 <select name="grades-tbe" id="grades-tbe" class="select">
-                                    <option value="Kinder1">Kinder 1</option>
-                                    <option value="Kinder2">Kinder 2</option>
-                                    <option value="Grade1">Grade 1</option>
-                                    <option value="Grade2">Grade 2</option>
-                                    <option value="Grade3">Grade 3</option>
-                                    <option value="Grade4">Grade 4</option>
-                                    <option value="Grade5">Grade 5</option>
-                                    <option value="Grade6">Grade 6</option>
+                                    <?php
+                                        require_once '../server_side/getGradeLevels.php';
+                                        $view = new getGradeLevels();
+                                    ?>
                                 </select>
 
                                 <p class="dfont">Huling baitang na natapos</p>
                                 <select name="last-grade" id="last-grade" class="select">
-                                    <option value="Kinder1">Kinder 1</option>
-                                    <option value="Kinder2">Kinder 2</option>
-                                    <option value="Grade1">Grade 1</option>
-                                    <option value="Grade2">Grade 2</option>
-                                    <option value="Grade3">Grade 3</option>
-                                    <option value="Grade4">Grade 4</option>
-                                    <option value="Grade5">Grade 5</option>
-                                    <option value="Grade6">Grade 6</option>
+                                    <?php 
+                                        $view = new getGradeLevels();
+                                    ?>
                                 </select>
 
                                 <div class="last-year-finished">
@@ -185,14 +176,14 @@
                                     <input type="text" name="fname" id="fname" class="textbox" placeholder="John Mark">
                                 </div>
                                 <div class="mname">
-                                    <p class="dfont">Gitnang Pangalan</p>
+                                    <p class="dfont">Gitnang Pangalan(Iwang blanko kung hindi naaangkop)</p>
                                     <div class="error-msg">
                                         <span class="em-mname"></span>
                                     </div>
                                     <input type="text" name="mname" id="mname" class="textbox" placeholder="Jimenez">
                                 </div>
                                 <div class="extension">
-                                    <p class="dfont">Extensyon (Jr., Sr.)</p>
+                                    <p class="dfont">Extensyon(Jr., Sr.) (Iwang blanko kung hindi naaangkop)</p>
                                     <div class="error-msg">
                                         <span class="em-extension"></span>
                                     </div>

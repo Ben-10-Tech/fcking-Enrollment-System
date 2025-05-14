@@ -42,16 +42,16 @@ class AdminEnrollmentStatusView {
     
             $data = $this->getEnrollees->getPendingEnrollees();
             foreach($data as $rows) {   
-                $dbEnrollmentStatus = htmlspecialchars($rows['Enrollment_Status']);
+                $dbEnrollmentStatus = $rows['Enrollment_Status'];
                 $enrollmentStatus = $this->stringEquivalent((int) $dbEnrollmentStatus);
                 $studentMiddleInitial = !empty($rows['Student_Middle_Name']) ? substr($rows['Student_Middle_Name'], 0, 1) . "." : "";
                 echo '<tr class="enrollee-row"> 
-                        <td>' . htmlspecialchars($rows['Learner_Reference_Number']) . '</td>
+                        <td>' . $rows['Learner_Reference_Number'] . '</td>
     
                         <td>' .htmlspecialchars($rows['Student_Last_Name']) . ', ' 
                         .htmlspecialchars($rows['Student_First_Name']) . ' ' 
                         .htmlspecialchars($studentMiddleInitial) . '</td>
-                        <td>' . htmlspecialchars($rows['Age']) . '</td>
+                        <td>' . $rows['Age'] . '</td>
                         <td>' . htmlspecialchars($rows['Birth_Date']) . '</td> 
                         <td>' . htmlspecialchars($rows['Sex']) . '</td>
                         <td>'. $enrollmentStatus.'</td>

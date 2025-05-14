@@ -18,13 +18,13 @@ class displayEnrollmentForms {
     
                 $data = $this->enrollee->getUserEnrollees($id);
                 foreach($data as $rows) {
-                    $studentMiddleInitial = substr($rows['Student_Middle_Name'], 0, 1) . ".";
+                    $studentMiddleInitial = !empty($rows['Student_Middle_Name']) ? substr($rows['Student_Middle_Name'], 0, 1) . "." : "";
                     echo '<tr> 
                             <td>'   .htmlspecialchars($rows['Student_Last_Name']) . ', ' 
                                     .htmlspecialchars($rows['Student_First_Name']) . ' ' 
                                     .htmlspecialchars($studentMiddleInitial) 
                                     . '</td>
-                            <td class = "button"> <a class= "Check-Status" href="../userPages/User_Enrollment_Status.php?id='.htmlspecialchars($rows['Enrollee_Id']).'"> Check Status </a></td>
+                            <td class = "button"> <a class= "Check-Status" href="../userPages/User_Enrollment_Status.php?id='. $rows['Enrollee_Id'] .'"> Check Status </a></td>
                         </tr>';
                 }       
             }

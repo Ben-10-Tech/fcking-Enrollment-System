@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function(){
     const searchBox = document.getElementById('search');
     const  searchEnrollee = document.getElementById('query-table');
     const originalTable = searchEnrollee.innerHTML; 
-    searchBox.addEventListener('change', function (){
+    searchBox.addEventListener('keyup', function (){
         const query = this.value.trim();
         console.log(originalTable);
         if (!query) {

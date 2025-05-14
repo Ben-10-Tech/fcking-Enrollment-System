@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded',function(){
     const fschool = document.getElementById("fschool"); //nais paaralan
     const fschoolAddr = document.getElementById("fschoolAddress"); //nais paaralan address
     const fschoolId = document.getElementById("fschoolID"); //nais paaralan ID
+
+    const enrollingGradeLevel = document.getElementById("grades-tbe");
+    const  lastGradeLevel = document.getElementById("last-grade");
    //set default academic year
     const year = new Date().getFullYear();
     startYear.value = year;

@@ -1,6 +1,8 @@
 /* ANTAS NG IMPORMASYON*/
 .error-msg{ 
     font-size: 0.8em;
+    visibility: hidden;
+    min-height: 1.2em;
  }
 .em-start-year,
 .em-last-year-finished,
@@ -30,7 +32,7 @@
 .em-guardian-first-name,
 .em-f-number,
 .em-m-number,
-.em-g-number {display: none;}
+.em-g-number {visibility: hidden;}
 
 .em-start-year.show,
 .em-last-year-finished.show
@@ -60,4 +62,4 @@
 .em-f-number.show,
 .em-m-number.show,
 .em-g-number.show
- {display: flex;}
+ {visibility:visible;}

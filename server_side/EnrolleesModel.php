@@ -18,9 +18,22 @@ class getEnrollees {
         return $result;
     }
     public function getEnrollmentInformation($id) {
-        $sql = "SELECT * FROM enrollee_parents
+        $sql = "SELECT enrollee_parents.*,
+                        enrollee.*,
+                        educational_information.*,
+                        educational_background.*,
+                        enrollee_address.*,
+                        disabled_student.*,
+                        parent_information.*,
+
+                        enrolling_level.Grade_Level AS E_Grade_Level,
+                        last_level.Grade_Level AS L_Grade_Level
+
+                FROM enrollee_parents
                 INNER JOIN enrollee ON enrollee_parents.Enrollee_Id = enrollee.Enrollee_Id
-                INNER JOIN educational_information ON  enrollee.Educational_Information_Id = educational_information.Educational_Information_Id 
+                INNER JOIN educational_information ON  enrollee.Educational_Information_Id = educational_information.Educational_Information_Id
+                INNER JOIN grade_level AS enrolling_level ON enrolling_level.Grade_Level_Id = educational_information.Enrolling_Grade_Level
+                INNER JOIN grade_level AS last_level ON last_level.Grade_Level_Id = educational_information.Last_Grade_Level 
                 INNER JOIN educational_background ON enrollee.Educational_Background_Id = educational_background.Educational_Background_Id
                 INNER JOIN enrollee_address ON enrollee.Enrollee_Address_Id = enrollee_address.Enrollee_Address_Id
                 INNER JOIN disabled_student ON enrollee.Disabled_Student_Id = disabled_student.Disabled_Student_Id
@@ -90,6 +103,8 @@ class getEnrollees {
     public function getEnrolled() {
         $sql = "SELECT * FROM enrollee_parents
                 INNER JOIN enrollee ON enrollee_parents.Enrollee_Id = enrollee.Enrollee_Id
+                INNER JOIN grade_level AS enrolling_level ON enrolling_level.Grade_Level_Id = educational_information.Enrolling_Grade_Level
+                INNER JOIN grade_level AS last_level ON last_level.Grade_Level_Id = educational_information.Last_Grade_Level
                 INNER JOIN educational_information ON  enrollee.Educational_Information_Id = educational_information.Educational_Information_Id 
                 INNER JOIN parent_information ON enrollee_parents.Parent_Id = parent_information.Parent_Id 
                 WHERE parent_information.Parent_Type = 'Guardian' AND Enrollment_Status = 1;";
