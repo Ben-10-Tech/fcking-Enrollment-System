@@ -24,7 +24,7 @@ class displayEnrollmentForms {
                                     .htmlspecialchars($rows['Student_First_Name']) . ' ' 
                                     .htmlspecialchars($studentMiddleInitial) 
                                     . '</td>
-                            <td class = "button"> <a class= "Check-Status" href="../userPages/User_Enrollment_Status.php?id='. $rows['Enrollee_Id'] .'"> Check Status </a></td>
+                            <td class = "button"> <a class= "Check-Status" href="../userPages/User_Enrollment_Status.php?id='.$rows['Enrollee_Id'].'"> Check Status </a></td>
                         </tr>';
                 }       
             }

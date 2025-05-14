@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/Change_Password.css">
     <link rel="stylesheet" href="../css/fonts.css">
-    <script src="../js/change-password.js"></script>
+    <script src="../js/change-password.js" defer></script>
 </head>
 <body>
     <div class="bg-image">
         <div class="blurred-background"></div>
-            <div class="form" class="input-boxes">
-            <h2 style="text-align: center;">Change Password</h2>
+            <div class="form">
+                <h2 >Change Password</h2>
                 <form id="change-password-form" class="overlay-form" action="../server_side/post_change_password.php" method="post"><br>
                     <input type="password" id="old-password" name="old-password" placeholder="Old Password" required><br>
                     <input type="password" id="new-password" name="new-password" placeholder="New Password" required><br>   

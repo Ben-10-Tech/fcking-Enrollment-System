@@ -79,11 +79,13 @@ input { /* email and password input */
 
 .main {
     background-color: #003366;
-    padding: 0px 0px;
-    width: 41.9em;
     text-align: center;
     min-height: 0%;
     height: 100vh;
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 body {
@@ -153,7 +155,8 @@ button {
 #img-container{
     margin: 0 auto;  
     height: 100vh;
-    width: 60em;
+    width: 100%;
+    max-width: 1000px;
 }
 
 #student{
