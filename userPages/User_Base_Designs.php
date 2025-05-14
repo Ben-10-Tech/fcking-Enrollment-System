@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once __DIR__ . '/../server_side/UserTypeView.php';
 if (!isset($_SESSION['User']['User-Id']) || !isset($_SESSION['User']['Registration-Id'])) {
     header("Location: ../client_side/login_form.php");
     exit();
@@ -107,9 +108,8 @@ if (!isset($_SESSION['User']['User-Id']) || !isset($_SESSION['User']['Registrati
                     <?php
                         if (isset($_SESSION['User']) && isset($_SESSION['User']['First-Name']) && isset($_SESSION['User']['Last-Name']) && isset($_SESSION['User']['User-Type'])) {
                             $name = $_SESSION['User']['First-Name'] . ", " . $_SESSION['User']['Last-Name'];
-                            $userType = $_SESSION['User']['User-Type'] == 4 ? "User" : "Unknown";
-                            echo "<p class='username'> $name </p>";
-                            echo "<p> $userType </p>";
+                            echo "<p class='user-name'>$name</p>";
+                            $viewType = new UserTypeView();
                         }
                     ?>
                 </div>

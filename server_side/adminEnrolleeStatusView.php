@@ -31,9 +31,17 @@
         </td>
     </tr>
 </table>
+<h1>IV. Impormasyon ng mga Magulang </h1>
+<table class="modal-table">
+    <tr>
+        <td>
+            <?php $view->parentInfo(); ?>
+        </td>
+    </tr>
+</table>
 
 <!-- 📄 PSA Image Section -->
-<h1>IV. PSA Birth Certificate</h1>
+<h1>V. PSA Birth Certificate</h1>
 <table class="modal-table">
     <tr>
         <tbody>

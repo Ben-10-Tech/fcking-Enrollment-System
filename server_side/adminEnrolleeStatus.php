@@ -95,6 +95,35 @@ class AdminEnrollmentAccessStatus {
         }
     }
 
+    public function parentInfo() {
+        if(isset($_GET['id'])) {
+            $student = $_GET['id'];
+            $allInfo = [];
+            $data = $this->getEnrollees->getEnrollmentInformation($student);
+            foreach($data as $rows) {
+                $if4ps = ($rows['If_4Ps'] == 1) ? 'Oo' : 'Hindi';
+                $allInfo[] = [
+                    'Relasyon' => htmlspecialchars($rows['Parent_Type']),
+                    'Pangalan' => htmlspecialchars($rows['Last_Name']) . ', '. htmlspecialchars($rows['First_Name']) . ' ' . htmlspecialchars($rows['Middle_Name']),
+                    'Educational attainment' => htmlspecialchars($rows['Educational_Attainment']),
+                    'Numero ng telepono' => htmlspecialchars($rows['Contact_Number']),
+                    'Kabilang sa 4ps' => $if4ps
+                ];
+            }
+            foreach($allInfo as $info) {
+                foreach($info as $field=> $value) {
+                    echo '<tr> 
+                            <td>' . $field . '</td>
+                            <td>' . $value . '</td>
+                        </tr>';
+                }
+                echo '<tr>
+                        <td colspan="2" class="divider"></td>
+                    </tr>';
+            }
+        }
+    }
+
     public function displayPsaImg() {
 
        try{

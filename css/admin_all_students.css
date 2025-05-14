@@ -1,0 +1,25 @@
+.content {
+    padding: 2rem;
+}
+.table-title {
+    padding: 1rem;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+.table-title h2 {
+    font-family: Barlow, sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #000;
+}
+.students th {
+    font-weight: bold;
+    background: #fff;
+}
+.students th, td {
+    font-family: Barlow, sans-serif;
+    text-align: center;
+    padding: 1rem;
+}

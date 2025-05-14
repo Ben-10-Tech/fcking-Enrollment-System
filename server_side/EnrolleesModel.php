@@ -10,18 +10,13 @@ class getEnrollees {
         $this->conn = $db->getConnection();
     }
 
-    public function getEnrollees(){
-        $sql = "SELECT * FROM enrollee_parents
-                INNER JOIN enrollee ON enrollee_parents.Enrollee_Id = enrollee.Enrollee_Id
-                INNER JOIN educational_information ON  enrollee.Educational_Information_Id = educational_information.Educational_Information_Id 
-                INNER JOIN parent_information ON enrollee_parents.Parent_Id = parent_information.Parent_Id 
-                WHERE parent_information.Parent_Type = 'Guardian' AND Enrollment_Status = 3;";
+    public function getPendingEnrollees(){
+        $sql = "SELECT * FROM enrollee WHERE Enrollment_Status = 3";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
-
     public function getEnrollmentInformation($id) {
         $sql = "SELECT * FROM enrollee_parents
                 INNER JOIN enrollee ON enrollee_parents.Enrollee_Id = enrollee.Enrollee_Id
@@ -32,7 +27,8 @@ class getEnrollees {
                 INNER JOIN parent_information ON enrollee_parents.Parent_Id = parent_information.Parent_Id 
                 WHERE enrollee_parents.Enrollee_Id = :id";
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute(['id' => $id]);
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
@@ -91,4 +87,41 @@ class getEnrollees {
 
         return (int)$result['Enrollment_Status'];
     }
+    public function getEnrolled() {
+        $sql = "SELECT * FROM enrollee_parents
+                INNER JOIN enrollee ON enrollee_parents.Enrollee_Id = enrollee.Enrollee_Id
+                INNER JOIN educational_information ON  enrollee.Educational_Information_Id = educational_information.Educational_Information_Id 
+                INNER JOIN parent_information ON enrollee_parents.Parent_Id = parent_information.Parent_Id 
+                WHERE parent_information.Parent_Type = 'Guardian' AND Enrollment_Status = 1;";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+    public function countEnrolled():string {
+        $sql = "SELECT COUNT(*) AS total FROM enrollee WHERE Enrollment_Status = 1;";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return (string)$result['total'];
+    }
+    public function searchEnrollees($query) {
+       try {
+         $query = "%$query%";
+        $sql = "SELECT * FROM enrollee
+                WHERE Student_First_Name LIKE :search
+                OR Student_Last_Name LIKE :search";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':search', $query);
+
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+       }
+       catch(PDOException $e) {
+        echo "<td> Error: " . $e->getMessage() . "<td>";
+       }
+    }
+   
 }

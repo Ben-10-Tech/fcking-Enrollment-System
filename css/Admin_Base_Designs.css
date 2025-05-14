@@ -141,11 +141,12 @@ p {
 .dashboard-ul a:hover {
     color: white;
 }
-
-#dashboard-spn a{
-    color: white !important;
+#dashboard-spn a:hover {
+    color: #E1A23C;
 }
-
+#dashboard-spn a {
+   color: white;
+}
 /*STUDENTS*/
 .students-ul a:hover {
     color: white;

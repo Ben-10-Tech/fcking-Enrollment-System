@@ -1,0 +1,136 @@
+body {
+    display: flex;
+    background-color: rgb(235, 231, 231);
+}
+
+.sidebar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 3.5vw;
+    background-color: #003366;
+    height: 100vh;
+    transition: width 0.2s ease-in, opacity 0.15s ease-out;
+    overflow: hidden;
+    font-family: 'Barlow', Arial;
+}
+
+.sidebar button {
+    border: none;   
+    background: none;
+    cursor: pointer;
+    opacity: 0;
+    max-height: 0;
+    transition: max-height 0.5s ease-out, opacity 0.3s ease-out;
+}  
+.sidebar a {
+    display: block; 
+    color: #CC8B20;
+    text-decoration: none;
+    cursor: pointer !important;
+}  
+.sidebar-title {
+    color: white;
+    background-color: #F1BD22;
+    display: grid;
+    height: 3em;
+    grid-template-columns: 50% 50%;
+}
+
+.sidebar-title button {
+    opacity: 1;
+    max-height: 100%;
+    cursor: pointer;
+    grid-column: 1/3;
+    justify-self: center;
+}
+
+.SSIS {
+    margin: 1em;
+    max-width: 0;
+    opacity: 0;
+    display: none;
+}
+.dashboard-ul {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height .2s ease-in, opacity .0005s ease-in;
+}
+.menu {
+    padding: 2em 1em 1em 1em; 
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
+}
+.menu-title {
+    color: #FFF8F8;
+    padding: 0em 1em;
+}
+.menu img {
+    width: 1.3em;
+    max-width: 2em;
+}
+.border-100sb {
+    position: relative;
+}
+.border-100sb::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0%;
+    width: 100%;
+    border-bottom: 1px solid #295077;
+}
+.sidebar span {
+    opacity: 0;
+    max-height: 0;
+    transition: max-height .1s ease-out, opacity .1s ease-out;
+}
+
+.main-content {
+    background-color: antiquewhite;
+    width: 100%;
+}
+.sidebar.active {
+    width: 20vw; 
+    transition: width 0.2s ease-in, opacity 0.15s ease-out;
+}
+
+/*SIDEBAR TITLE*/
+.sidebar.active .SSIS {
+    display: flex;
+    max-height: 2.5em;
+    font-size: 1.2em;
+    font-weight: 600;
+    padding-left: 1em;
+}
+
+.sidebar.active.sidebar-title button {
+    position: absolute;
+    right: 0;   
+}
+.menu-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: white;
+    transition: max-height .1s ease-out, opacity .1s ease-out;
+    max-width: 10vh;
+    width: 2em;
+}
+
+.sidebar.active .menu-btn {
+    grid-column: 2/2;
+    justify-self: right;
+    margin-right: 1em;
+}
+.sidebar.active.sidebar-title button {
+    position: absolute;
+    right: 0;   
+}
+.sidebar.active span, .sidebar.active button {
+    max-height: 100%;
+    opacity: 1;
+    transition: max-height .5s ease-out, opacity .5s ease-out;
+}

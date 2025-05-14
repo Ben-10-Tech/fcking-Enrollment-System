@@ -40,28 +40,22 @@ class AdminEnrollmentStatusView {
     
         try {
     
-            $data = $this->getEnrollees->getEnrollees();
+            $data = $this->getEnrollees->getPendingEnrollees();
             foreach($data as $rows) {   
                 $dbEnrollmentStatus = htmlspecialchars($rows['Enrollment_Status']);
                 $enrollmentStatus = $this->stringEquivalent((int) $dbEnrollmentStatus);
-                $parentMiddleInitial = substr($rows['Middle_Name'], 0, 1) . ".";
-                $studentMiddleInitial = substr($rows['Student_Middle_Name'], 0, 1) . ".";
+                $studentMiddleInitial = !empty($rows['Student_Middle_Name']) ? substr($rows['Student_Middle_Name'], 0, 1) . "." : "";
                 echo '<tr class="enrollee-row"> 
                         <td>' . htmlspecialchars($rows['Learner_Reference_Number']) . '</td>
     
                         <td>' .htmlspecialchars($rows['Student_Last_Name']) . ', ' 
                         .htmlspecialchars($rows['Student_First_Name']) . ' ' 
                         .htmlspecialchars($studentMiddleInitial) . '</td>
-                        <td>' . htmlspecialchars($rows['Last_Grade_Level']) . '</td>
-                        <td>' . htmlspecialchars($rows['Last_Name']) . ', ' . htmlspecialchars($rows['First_Name']) . ' ' 
-                               .htmlspecialchars($parentMiddleInitial) . '</td> 
-                        <td>' 
-                        . htmlspecialchars($rows['Contact_Number']) . 
-                        '</td>
-                        <td>'
-                            . $enrollmentStatus.'
-                        </td>
-                        <td> <button class="view-button" data-id="' . $rows['Enrollee_Id'] . '"> View info</button><td>
+                        <td>' . htmlspecialchars($rows['Age']) . '</td>
+                        <td>' . htmlspecialchars($rows['Birth_Date']) . '</td> 
+                        <td>' . htmlspecialchars($rows['Sex']) . '</td>
+                        <td>'. $enrollmentStatus.'</td>
+                        <td> <button class="view-button" data-id="' . $rows['Enrollee_Id'] . '"> View info</button></td>
                         </tr>';
             }
         }
