@@ -39,7 +39,7 @@ if (!isset($_SESSION['Admin']['User-Id']) || !isset($_SESSION['Admin']['Staff-Id
                             <a href="./Admin_All_Students.php" class="allStudents">All Students</a>
                         </li>
                         <li>
-                            <a href="../client_side/Admin_Students.php" class="studentInfo">Student</a>
+                            <a href="./Admin_Subjects.php" class="studentInfo">Add Subjects</a>
                         </li>
                     </ul>
                 </div>

@@ -22,19 +22,13 @@ class DashboardView {
         $toFollow = $this->dashboard->FollowUpStudents();
         echo $toFollow;
     }
-
-    public function displayTemporarilyEnrolledStudents() {
-        $temporary = $this->dashboard->TemporarilyEnrolledStudents();
-        echo $temporary;
-    }
-
     public function displayPendingEnrolleesInformation() {
         $pendingEnrollees = $this->dashboard->PendingEnrolleesInformation();
         
         if (!empty($pendingEnrollees)) {
             for ($i = 0; $i < 5; $i++) {
                 $Student_Full_Name = $pendingEnrollees[$i]['Student_First_Name'] . " " . $pendingEnrollees[$i]['Student_Middle_Name'] . " " . $pendingEnrollees[$i]['Student_Last_Name'];
-                $Enrolling_Grade_Level = $pendingEnrollees[$i]['Enrolling_Grade_Level'];
+                $Enrolling_Grade_Level = $pendingEnrollees[$i]['E_Grade_Level'];
                 $Learner_Reference_Number = $pendingEnrollees[$i]['Learner_Reference_Number'];
                 echo '
                     <tr>

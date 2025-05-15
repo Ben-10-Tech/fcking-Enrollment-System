@@ -12,6 +12,22 @@ document.addEventListener('DOMContentLoaded',function(){
 
     const enrollingGradeLevel = document.getElementById("grades-tbe");
     const  lastGradeLevel = document.getElementById("last-grade");
+
+    enrollingGradeLevel.selectedIndex = lastGradeLevel.selectedIndex + 1;
+
+    lastGradeLevel.options[lastGradeLevel.options.length - 1].disabled = true; 
+    lastGradeLevel.addEventListener('change' ,function() {
+       const nextIndex = this.selectedIndex + 1;
+       if (nextIndex < enrollingGradeLevel.options.length) {
+            enrollingGradeLevel.selectedIndex = nextIndex;
+       }
+    });
+    enrollingGradeLevel.addEventListener('change' ,function() {
+        const prevIndex = this.selectedIndex - 1;
+        if (prevIndex >= 0) {
+            lastGradeLevel.selectedIndex = prevIndex;
+        }
+    });
    //set default academic year
     const year = new Date().getFullYear();
     startYear.value = year;

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_type =1);
+declare(strict_types =1);
 
 require_once __DIR__ .'/dbconnection.php';
 
@@ -10,7 +10,6 @@ class getGradeLevels {
     public function __construct() {
         $db = new Connect();
         $this->conn = $db->getConnection();
-        $this->createSelectValues();
     }
 
     private function gradeLevelquery() {
@@ -22,13 +21,13 @@ class getGradeLevels {
         return $result;
     }
 
-    private function createSelectValues() {
+    public function createSelectValues() {
 
         try {
             $data = $this->gradeLevelQuery();
             if ($data) {
                 foreach($data as $rows) {
-                echo '<option value=' . htmlspecialchars($rows['Grade_Level']) .'>' . 
+                echo '<option value=' . $rows['Grade_Level_Id'] .'>' . 
                 htmlspecialchars($rows['Grade_Level'])  . '</option>';
                 }
             }
@@ -38,6 +37,22 @@ class getGradeLevels {
         }
         catch(PDOException $e) {
             echo "Error: " . $e->getMessage();
+        }
+    }
+    public function createCheckBoxes() {
+        try {
+            $data = $this->gradeLevelQuery();
+            if ($data) {
+                foreach($data as $rows) {
+                    echo '<div class="input-container">
+                        </label><input type="checkbox" name="levels[]" value="'. $rows['Grade_Level_Id'] .'">'
+                    .htmlspecialchars($rows['Grade_Level']).' </label>
+                    </div>';
+                }
+            }
+        }
+        catch(PDOException $e) {
+            echo "Error" . $e->getMessage();
         }
     }
 }

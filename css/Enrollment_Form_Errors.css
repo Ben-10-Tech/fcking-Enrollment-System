@@ -16,7 +16,6 @@
 .em-language,
 .em-religion,
 .em-email,
-.em-email,
 .em-region,
 .em-province,
 .em-city,
@@ -35,13 +34,13 @@
 .em-g-number {visibility: hidden;}
 
 .em-start-year.show,
-.em-last-year-finished.show
+.em-last-year-finished.show,
 .em-lschool.show,
 .em-lschoolAddress.show,
 .em-lschoolID.show,
 .em-fschool.show,
 .em-fschoolAddress.show,
-.em-fschoolId.show,
+.em-fschoolID.show,
 .em-PSA-number.show 
 .em-language.show,
 .em-religion.show,

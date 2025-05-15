@@ -60,23 +60,6 @@
                         </p>
                     </div>
                 </div>
-                <!--Early Registration-->
-                <div class="card card-4">
-                    <div class="card-image border-50">
-                        <img src="../imgs/Early.png" alt="">
-                        <p class="card-text">Temporarily Enrolled</p>   
-                    </div>
-                    <div class="number-div">
-                        <p class="number">
-                            <?php
-                                include_once '../server_side/DashboardView.php';
-                                $dashboard = new DashboardView();
-                                $dashboard->displayTemporarilyEnrolledStudents();
-                            ?>
-                        </p>
-                    </div>
-                </div>
-            </div>
             <div class="big-card-wrapper">
                 <!--PENDING ENROLLMENTS BIG-->
                 <div class="pending-enrollments-wrapper">

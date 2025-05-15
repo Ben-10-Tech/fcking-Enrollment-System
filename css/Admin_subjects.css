@@ -1,0 +1,50 @@
+.subject-main-content {
+    padding: 3em;
+}
+input[type="radio"] {
+    padding: 0.2em;
+    width: 1rem;
+    height: 0.8rem;
+    border: 1px solid black;
+    position: relative;
+    border-radius: 0.5em;
+}
+input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    border-radius: 0.5em;
+    width: 0.6rem;
+    height: 0.5rem;
+    background-color: blue;
+}
+input[type="checkbox"] {
+    position: relative;
+    width: 1rem;
+    height: 0.8rem;
+    border: 1px solid black;
+}
+input[type="checkbox"]:checked::after {
+    content: '';
+    width: 0.8rem;
+    width: 0.8rem;
+    background-color: blue;
+    position: absolute;
+}
+.form {
+    display: flex;
+    gap: 0.5em;
+}
+.checkbox-container {
+    position: relative;
+}
+.checkboxes {
+    display: none;
+    padding: 0.3rem;
+    background-color: white;
+    width: 100%;
+    position: absolute;
+    flex-direction: column;
+}
+.checkboxes.show {
+    display: flex;
+}
