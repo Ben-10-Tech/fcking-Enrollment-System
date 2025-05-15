@@ -51,11 +51,9 @@ if (!isset($_SESSION['Admin']['User-Id']) || !isset($_SESSION['Admin']['Staff-Id
                     <button class="teachers-btn" onclick="teachersDrop()"><img src="../imgs/chevron-down.svg" class ="bi-chevron-down"></button>
                     <ul class="teachers-ul">
                         <li>
-                            <a href="../client_side/Admin_All_Teachers.php" class="allTeachers">All Teachers</a>
+                            <a href="../adminPages/Admin_All_Teachers.php" class="allTeachers">All Teachers</a>
                         </li>
-                        <li>
-                            <a href="../client_side/Admin_Teachers.php" class="teachers">Teachers</a>
-                        </li>
+
                     </ul>
                 </div>
 
@@ -70,9 +68,6 @@ if (!isset($_SESSION['Admin']['User-Id']) || !isset($_SESSION['Admin']['Staff-Id
                         </li>
                         <li>
                             <a href="./Admin_Enrollment_Pending.php" class="pending">Pending</a>
-                        </li>
-                        <li>
-                            <a href="" class="toFollow">To Follow-up</a>
                         </li>
                     </ul>
                 </div>

@@ -281,6 +281,7 @@ p {
 .account {
     display: flex;
     padding-right: 2em;
+    font-family: 'Arial';
 }
 
 .account button {
@@ -307,6 +308,10 @@ p {
 .account-settings-btn {
     position: relative;
     display: inline-block;
+}
+
+.account-settings-wrapper{
+    font-weight: 700;
 }
 
 .account-settings-btn-content-wrapper {
