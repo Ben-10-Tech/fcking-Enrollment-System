@@ -22,7 +22,7 @@
                 <a href="../adminPages/edit_identifiers_test.php">Update Credentials</a>
             </div>
         </div>
-      </div>
+    </div>
   </div>
 </body>
 </html>
