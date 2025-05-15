@@ -3,34 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SSIS-Admin Teacher Info</title> 
-    <?php
-        include '../adminPages/admin_base_designs.php';
-    ?>
+    <title>Document</title> 
+    <script src="../js/admin-teacher-info.js"></script>
     <link rel="stylesheet" href="../css/Admin_Teacher_Info.css">
-</head>
-<body>
-    <div class="main-content">
-        <div class="content">
-            <div class="teacher-info-start">
-                <div class="header">
-                    <div class="header-left">
-                        <h2> Teacher Information </h2>
-                    </div>
-                    <div class="header-middle">
-                        <p class="teacher-info">Personal Information and Position</p>
-                        <p class="add-teacher">Add Teacher</p>
-                    </div>
-                    <div class="header-right">
-                        <p class="teacher-status">Status</p>
-                        <p class="status">
-                            <?php
-                                require_once '../server_side/adminTeacherInfoView.php';
-                                $teacherInfo = new TeacherInformationView();
-                                $teacherInfo->displayStatus();
-                            ?>
-                        </p>
-                        <button class="button">Edit</button>
+    <?php
+        include '../adminPages/admin_base_designs.php'; 
+    ?>
+
+      <!--START OF THE MAIN CONTENT-->
+      <div class="content">
+            <form action="../server_side/post_edit_staff_information.php" method="POST" id="editForm">
+                <div class="teacher-info-start">
+                    <div class="header">
+                        <div class="header-left">
+                            <h2> Teacher Information </h2>
+                        </div>
+                        <!-- <div class="header-middle">
+                            <p class="teacher-info">Personal Information and Position</p>
+                        </div> -->
+                        <div class="header-right">
+                            <p class="teacher-status">Status</p>
+                            <p class="status" id="statusDisplay">
+                                <?php
+                                    require_once '../server_side/adminTeacherInfoView.php';
+                                    $teacherInfo = new TeacherInformationView();
+                                    $teacherInfo->displayStatus();
+                                ?>
+                            </p>
+                            <select id="statusSelect" name="status" style="display:none;">
+                                <option value="Active">Active</option>
+                                <option value="Retired">Retired</option>
+                                <option value="Transferred Out">Transferred Out</option>
+                            </select>
+                        <?php 
+                            if ($_SESSION['Admin']['User-Type'] == 1) {
+                            echo '<button type="button" id="editButton" class="button" onclick="enableEdit()">Edit</button>
+                                <button type="submit" id="saveButton" style="display:none;">Save</button>';
+                            }
+                        ?>
+
                     </div>
                 </div>
                 <div class="menu-content">
@@ -55,7 +66,7 @@
                                     require_once '../server_side/adminTeacherInfoView.php';
                                     $teacherInfo = new TeacherInformationView();
                                     $teacherInfo->displayEmail();
-                                ?>
+                                    ?>
                             </p>
                         </div>
                         <div class="profile-contact">
@@ -65,7 +76,7 @@
                                     require_once '../server_side/adminTeacherInfoView.php';
                                     $teacherInfo = new TeacherInformationView();
                                     $teacherInfo->displayContact();
-                                ?>
+                                    ?>
                             </p>
                         </div>
                         <div class="profile-address">
@@ -81,6 +92,31 @@
                     </div>
                     <div class="profile-content">
                         <p class="position">Current Postion</p>
+                        <p id="positionDisplay">
+                            <?php
+                                $teacherInfo = new TeacherInformationView();
+                                $teacherInfo->displayPosition();
+                            ?>
+                        </p>
+                        <select id="positionSelect" name="position" style="display:none;">
+                            <option value="Teacher 1">Teacher 1</option>
+                            <option value="Teacher 2">Teacher 2</option>
+                            <option value="Teacher 3">Teacher 3</option>
+                            <option value="Teacher 4">Teacher 4</option>
+                            <option value="Teacher 5">Teacher 5</option>
+                            <option value="Teacher 6">Teacher 6</option>
+                            <option value="Teacher 7">Teacher 7</option>
+                            <option value="Master Teacher 1">Master Teacher 1</option>
+                            <option value="Master Teacher 2">Master Teacher 2</option>
+                            <option value="Master Teacher 3">Master Teacher 3</option>
+                            <option value="Master Teacher 4">Master Teacher 4</option>
+                            <option value="Master Teacher 5">Master Teacher 5</option>
+                            <option value="Principal 1">Principal 1</option>
+                            <option value="Principal 2">Principal 2</option>
+                            <option value="Principal 3">Principal 3</option>
+                            <option value="Principal 4">Principal 4</option>
+                            <option value="Principal 5">Principal 5</option>
+                        </select>
                         <p class="advisory">Class Advisory</p>
                         <table class="profile-info">
                             <tr>
@@ -129,15 +165,36 @@
                                 <th>TIN</th>
                             </tr>
                             <tr>
-                                <td>123456</td>
-                                <td>1234567890</td>
-                                <td>123-456-789</td>
+                                <td>
+                                    <?php
+                                        require_once '../server_side/adminTeacherInfoView.php';
+                                        $teacherInfo = new TeacherInformationView();
+                                        $teacherInfo->displayEmployeeNumber();
+                                        ?>
+                                </td>
+                                <td>
+                                    <?php
+                                        require_once '../server_side/adminTeacherInfoView.php';
+                                        $teacherInfo = new TeacherInformationView();
+                                        $teacherInfo->displayPhilhealthNumber();
+                                        ?>
+                                </td>
+                                <td>
+                                    <?php
+                                        require_once '../server_side/adminTeacherInfoView.php';
+                                        $teacherInfo = new TeacherInformationView();
+                                        $teacherInfo->displayTIN();
+                                        ?>
+                                </td>
                             </tr>
                         </table>
                     </div>
                 </div>            
-            </div>
-        </div>
-    </div>
+            </form>
+      </div>
+  </div>
 </body>
 </html>
+
+
+

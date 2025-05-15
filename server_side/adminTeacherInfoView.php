@@ -1,8 +1,6 @@
 <?php
     require_once '../server_side/adminTeacherInfoModel.php';
-    if ($_SESSION['Admin']['User-Type'] != 1) {
-        die("Unauthorized");
-    }
+
 
     class TeacherInformationView {
         protected $teacherInfoModel;
@@ -10,8 +8,8 @@
         protected $teacherInformation;
 
         const ACTIVE = 1;
-        const TRANSFERRED_OUT = 2; 
-        const INACTIVE = 3;
+        const RETIRED = 2;
+        const TRANSFERRED_OUT = 3; 
 
         public function __construct(){
             $this->teacherInfoModel = new TeacherInformationModel();
@@ -19,6 +17,10 @@
             if (isset($_GET['staff_id'])) {
                 $this->staff_id = $_GET['staff_id'];
                 $this->teacherInformation = $this->teacherInfoModel->getAllResults($this->staff_id);
+            
+                echo '<script>
+                    sessionStorage.setItem("staff_id", ' . json_encode($this->staff_id) . ');
+                </script>';
             } else {
                 echo "No teacher has been selected";
             }
@@ -68,14 +70,53 @@
                 case self::TRANSFERRED_OUT:
                     echo "Transferred Out";
                     break;
-                case self::INACTIVE:
-                    echo "Inactive";
+                case self::RETIRED:
+                    echo "Retired";
                     break;
                 default:
                     echo "Unknown Status";
             }
         }
 
-        
+        public function displayPosition() {
+            if(!isset($this->teacherInformation['Position'])) {
+                echo "N/A";
+            }
+            else {
+                $Position = $this->teacherInformation['Position'];
+                echo $Position;
+            }
+            
+        }
+
+        public function displayEmployeeNumber() {
+            if(!isset($this->teacherInformation['Employee_Number'])) {
+                echo "N/A";
+            }
+            else {
+                $Employee_Number = $this->teacherInformation['Employee_Number'];
+                echo $Employee_Number;
+            }
+        }
+
+        public function displayPhilhealthNumber() {
+            if(!isset($this->teacherInformation['Philhealth_Number'])) {
+                echo "N/A";
+            }
+            else {
+                $Philhealth_Number = $this->teacherInformation['Philhealth_Number'];
+                echo $Philhealth_Number;
+            }
+        }
+
+        public function displayTIN() {
+            if(!isset($this->teacherInformation['TIN'])) {
+                echo "N/A";
+            }
+            else {
+                $TIN = $this->teacherInformation['TIN'];
+                echo $TIN;
+            }
+        }
     }
 ?>
