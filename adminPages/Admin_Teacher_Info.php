@@ -121,6 +121,19 @@
                                 <td>25</td>
                             </tr>
                         </table>
+                        <p class="government-id">Government ID(s)</p>
+                        <table class="profile-info">
+                            <tr>
+                                <th>Employee Number</th>
+                                <th>Philhealth Number</th>
+                                <th>TIN</th>
+                            </tr>
+                            <tr>
+                                <td>123456</td>
+                                <td>1234567890</td>
+                                <td>123-456-789</td>
+                            </tr>
+                        </table>
                     </div>
                 </div>            
             </div>
