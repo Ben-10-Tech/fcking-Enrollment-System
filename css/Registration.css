@@ -1,4 +1,3 @@
-
 /*Head, main, logo container, page title*/
 .header { 
     color: White;
@@ -12,14 +11,19 @@
 
 #img-container{
     margin: 0 auto;  
-    height: 100vh;
-    width: 60em;
-    align-items: center;
-    display: flex;
+    height: auto;
+    min-height: 100vh;
+    width: 100%;
+    max-width: 1000px;
+    overflow: hidden;
 }
 
 #student{
-    height: 100vh;
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    object-fit: cover;
+    display: block;
 }
 
 #logo-container {
@@ -40,8 +44,9 @@
 .page-title { 
     color:#f3f3f3;
     font-size: 100%;
-    padding-bottom: 1.5em;
+    padding-bottom: 0.5em;
 }
+
 
 hr{
     border: 0;
@@ -50,25 +55,29 @@ hr{
     background-image: linear-gradient(to right, #E1A23C, #ccc, #E1A23C);
     width: 8em;
     margin: 0 auto;
-    margin-bottom: 1em;
-
 }
 
-
-/*body, main, container, user details, form-label, input, details*/
-body {
+html, body {
+    display: flex;
+    font-family: sans-serif;
     max-height: 100vh;
     background: #f3f3f3;
+    direction: column;
     margin: 0;
-    display: flex;
+    font-family: "Balthazar";
+    overflow: hidden;
 }
 
 .main {
-    background-color: #003366;  
-    width: 40em;
+    background-color: #003366;
     text-align: center;
     min-height: 0%;
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 .user-details{
@@ -80,9 +89,8 @@ body {
     justify-content: center;
 }
 
-
 .input-box {
-    margin: 0em 2em 0em 2em;
+    margin: 0em 2em 0em 0em;
     justify-content: center;
     display: inline-block;
 }
@@ -94,10 +102,9 @@ body {
     font-family: Baloo-Thambi-2;    
 }
 
-
 input {
-    margin: .4em .3em 2em .3em;
-    display: inline-block;
+    margin: .4em .3em 1.5em .3em;
+    display: flex;
     width: 16em;
     height: 3.5em;
     font-size: .9em;
@@ -106,7 +113,6 @@ input {
     font-family: 'Baloo Thambi';
     background-color: #70859c;
 }
-
 
 .details {
     color: rgb(255, 248, 248);
@@ -121,16 +127,12 @@ input {
     text-align: center;
 }
 
-.cn {
-    margin-bottom: 1.2em;
-}
-
 /*button, Create, Two Lines*/
 .button {
-    margin: 1em 13em 1.3em 13em;
+    margin: .6em 12em 0.8em 12em;
 }
 
-p{
+p{  
     color: white;
 }
 
@@ -142,15 +144,16 @@ p{
 .vlorange{
     background-color:  #E1A23C;
     width: 2em;
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
 }
 
 .vlyellow{
     background-color:  #CC8B20;
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
     width: 2em;
 }
-
 .submit-btn {
     padding: 1em 2em 2em 2em;
     border-radius: 78px;
@@ -166,3 +169,137 @@ p{
     background-color: #CC8B20;
     transition: all 0.3s ease;
 }
+
+/* Desktops (1024px and up) */
+@media (max-width: 1024px) {
+    .main {
+        width: 100%;
+        padding: 10px;
+    }   
+    #user-details{
+        font-size: 15px;
+    }
+    .vlyellow, .vlorange{
+        display: none;
+    }
+
+}
+
+/* Tablets (768px - 1023px) */
+@media (max-width: 768px) and (max-width: 1023px) {
+    .main {
+        width: 100%;
+        padding: 10px;
+    }
+    .input {
+        margin: .4em .3em 2.5em .3em;
+        width: 226px;
+        height: 3;
+    }
+    #student, #img-container {
+        display: none;
+    }
+    button {
+        margin: -1px 18px 9px 6px;
+        width: 26%;
+    }
+    #wrap {
+        width: 99%;
+    }
+    .main {
+        width: 100%;
+        padding: 10px;
+        max-width: 768px;
+    }
+    .user-details {
+        margin: 2em 0em 0em 1em;
+        font-size: 15px;
+    }
+}
+
+/* Medium phones (425px - 767px) */
+@media (max-width: 767px) {
+    .header{
+        font-size: 21.4px;
+    }
+    .main {
+        width: 100%;
+    }
+    .box {
+        width: 70%;
+        margin: -10px auto;
+    }
+    input{
+        font-size: 8.7px;
+    }
+    button, .admin-login-button {
+        height: 46px;
+        margin: 2px 2%;
+        width: 37%;
+        font-size: 14px;
+    }
+    #student, #img-container {
+        display: none;
+    }
+    .user-details {
+        margin: 2em -1em 0em 1em;
+        font-size: 11px;
+    }
+    button {
+        margin: -1px 18px 9px 6px;
+        width: 26%;
+    }
+    p {
+    color: white;
+    font-size: 13px;
+    }
+}
+
+/* Small phones (375px - 424px) */
+@media (max-width: 424px) {
+    .main {
+        padding: 10px 5px;
+    }
+    .page-title h3, h2 {
+        font-size: 1em;
+    }
+    .box {
+        width: 95%;
+    }
+    button, .admin-login-button {
+        width: 95%; 
+    }
+    input {
+        margin: 4px auto;
+    }
+}
+
+/* Extra small phones (320px - 374px) */
+@media (max-width: 374px) {
+    h2 {
+        font-size: .9em;
+    }
+    button, .admin-login-button {
+        width: 100%;
+    }
+
+  #student, #img-container {
+    display: none;
+    }
+    p{
+        font-size: 13px;
+    }
+    .user-details {
+        margin: 1em 0em 1em 1em;
+        font-size: 10px;
+    }
+    .input-box {
+    margin: 0em 2em 2em 1em;
+    }
+    input{
+        margin: 0px auto;
+    }
+}
+
+
+
