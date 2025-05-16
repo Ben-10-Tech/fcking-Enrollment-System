@@ -6,13 +6,14 @@
     <title>Staff Registration</title>
     <link rel="stylesheet" href="../css/Staff_Registration.css">
     <link rel="stylesheet" href="../css/fonts.css">
+    <script src="../js/staff-registration.js"> </script>
 </head>
 <body>
     <div class="bg-image">
     <div class="blurred-background"></div>
         <div class="form">
             <h2 style="text-align: center;">Register New Staff</h2>
-        <form class="overlay-form" action="../server_side/post_staff_registration.php" method="POST">
+        <form class="overlay-form" action="../server_side/post_staff_registration.php" method="POST" name="Staff_Registration_Form" id="Staff_Registration_Form">
 
             <input type="text" name="Staff_First_Name" id="Staff_First_Name" placeholder="First Name" required><br><br>
 

@@ -35,6 +35,7 @@
                 <input type="text" id="Region" name="Region" required>
 
                 <input type="submit" value="Update">    
+                <button onclick="history.back()">Go Back</button>
             </form>
         </div>
     </div>

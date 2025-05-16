@@ -28,6 +28,7 @@
             <input type="text" id="TIN" name="TIN" required>
 
             <input type="submit" value="Update">
+            <button onclick="history.back()">Go Back</button>
         </form>
 
       </div>

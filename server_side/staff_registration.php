@@ -68,21 +68,34 @@ class StaffRegistration {
                 $send_password->send_password($Staff_Last_Name, $Staff_First_Name, $Staff_Middle_Name, $Staff_Contact_Number, $password);
             } catch (Exception $e) {
                 $this->conn->rollBack();
-                echo 'Failed to send password: ' . $e->getMessage();
-                return;
+                return [
+                    'success' => false,
+                    'message' => 'Failed to send password: ' . $e->getMessage(),
+                    'error' => 'sms_error'
+                ];
             }
 
-            // Commit the transaction if everything is successful
             $this->conn->commit();
-            echo 'Registration Successful';
+            return [
+                'success' => true,
+                'message' => 'Staff registered successfully.',
+            ];
         } catch (PDOException $e) {
             $this->conn->rollBack();
 
             // Handle duplicate entry error specifically
             if ($e->errorInfo[1] == 1062) {
-                echo 'Registration failed: The number you entered is already registered';
+                return [
+                    'success' => false,
+                    'message' => 'Email or Contact Number already exists.',
+                    'error' => 'duplicate_entry'
+                ];
             } else {
-                echo 'Error: ' . $e->getMessage();
+                return [
+                    'success' => false,
+                    'message' => 'Registration failed: Database error.',
+                    'error' => 'database'
+                ];
             }
         }
     }

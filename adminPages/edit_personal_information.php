@@ -32,6 +32,8 @@
           <input type="text" id="Staff_Contact_Number" name="Staff_Contact_Number" required>
 
           <input type="submit" value="Update">
+          
+          <button onclick="history.back()">Go Back</button>
         </form>
       </div>
   </div>
