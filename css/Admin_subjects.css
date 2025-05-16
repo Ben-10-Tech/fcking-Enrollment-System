@@ -30,6 +30,8 @@ input[type="checkbox"]:checked::after {
     background-color: blue;
     position: absolute;
 }
+
+
 .form {
     display: flex;
     gap: 0.5em;

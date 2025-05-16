@@ -71,8 +71,21 @@ document.addEventListener('DOMContentLoaded', function (){
                 close.addEventListener('click', function(){
                     modal.style.display = 'none';
                 });
+<<<<<<< HEAD
 
             fetch('../server_side/adminEnrolleeFollowup.php?id='+ encodeURIComponent(enrolleeId))
+=======
+            const form = document.getElementById('deny-followup');
+            const formData = new FormData(form);
+
+            for(const[key, value] of formData.entries()){
+                console.log(`${key}: ${value}`);
+            }
+            fetch('../server_side/adminEnrolleeFollowup.php', {
+                method: 'POST',
+                body: formData
+            })
+>>>>>>> 4194bdd0f92fffffe32814793a4e17c9b5d5bdf3
             .then(response => response.json())
             .then(data => {
                 console.log(data);
