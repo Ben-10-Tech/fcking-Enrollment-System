@@ -16,16 +16,13 @@
             <p class="title">Edit Information</p>
             <div class="links">
                 <div class="card">
-                    <a href="../adminPages/edit_personal_information.php">Update Personal Information</a> <br> <br>
-                    <p class="info">This is all about your personal information such as your full name, email, and contact number</p>
+                    <a href="../adminPages/edit_personal_information.php">Update Personal Information</a>
                 </div>
                 <div class="card">
-                    <a href="../adminPages/edit_address_test.php">Update Address</a> <br> <br>  
-                    <p class="info">This is all about your personal information such as your full address</p>
+                    <a href="../adminPages/edit_address_test.php">Update Address</a>
                 </div>
                 <div class="card">
-                    <a href="../adminPages/edit_identifiers_test.php">Update Credentials</a> <br> <br>
-                    <p class="info">This is all about your personal information such as your government IDs</p>
+                    <a href="../adminPages/edit_identifiers_test.php">Update Credentials</a>
                 </div>
             </div>
         </div>
