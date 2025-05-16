@@ -157,7 +157,7 @@
                                 <td>25</td>
                             </tr>
                         </table>
-                        <p class="government-id">Government ID(s)</p>
+                        <p class="government-id">Government IDs</p>
                         <table class="profile-info">
                             <tr>
                                 <th>Employee Number</th>
