@@ -23,7 +23,9 @@
                 <span class = "separator"> | </span>
                 <a href = "../userPages/Learn_More_Page.php" class = "nav-link"> Learn More </a>
                 <span class = "separator"> | </span>
-                <a href = "../client_side/login_form.php" class = "nav-link"> Log In </a> <!--not yet-->
+                <a href = "../client_side/login_form.php" class = "nav-link"> Log In </a> 
+                <span class = "separator"> | </span>
+                <a href = "../client_side/Registration.php" class = "nav-link"> Sign Up </a> 
             </div>
         </div>
     </div>

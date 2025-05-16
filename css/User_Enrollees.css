@@ -28,7 +28,7 @@ th, td {
 .Check-Status {
     text-align: center;
     border-radius: 5px;
-    background-color: #4CAF50;
+    background-color: #073f88;
     color: white;
     width: 25%;
     padding: .5em;
@@ -36,7 +36,7 @@ th, td {
 }
 
 .Check-Status:hover {
-    background-color: #69f070;
+    background-color: #327ee2;
     cursor: pointer;
     color: rgb(0, 0, 0);
 
