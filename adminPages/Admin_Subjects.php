@@ -11,9 +11,9 @@
         <div class="subject-main-content">
             <div class="content">
                 <div class="add-subject">
-                    
+
                     <form action="../server_side/post_subjects.php" method="post" class="form">
-                        <input type="text" placeholder="enter subject name..." name="subject-name">
+                        <input type="text" placeholder="Enter Subject Name..." name="subject-name">
                         <div class="radio-container">
                             <p> Is this subject being taught in many grade levels?</p>
                             <input type="radio" id="multiLevelYes" name="subject" value="Yes">

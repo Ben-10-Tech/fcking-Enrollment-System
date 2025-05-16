@@ -1,10 +1,19 @@
 .content {
-    margin: 4em;
     width: 45vw;
-    height: 80.5vh;
+    height: 81.5vh;
+    display: flex;
+    justify-self: center;
+    padding-top: 85px;
+    margin-bottom: 105px;   
+}
+
+.wrapper {
     background-color: white;
     padding: 1em;
+    border-radius: 1.25em;
+    border: 1px solid rgb(0, 0, 0, .5);
 }
+
 table {
     position: relative;
     margin: 0 auto;
@@ -46,3 +55,10 @@ th, td {
 tr:nth-child(odd) {background-color: #ffffff;}
 
 tr:nth-child(even) {background-color: #f4f4f4;}
+
+.title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 8px;
+    font-weight: bolder ;
+}

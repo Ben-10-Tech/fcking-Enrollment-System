@@ -1,4 +1,4 @@
-body {
+.content {
     font-family: Arial, sans-serif;
 }
 
@@ -50,4 +50,27 @@ input[type="submit"]:hover {
     font-size: 24px;
     margin-bottom: 20px;
     font-weight: bolder ;
+}
+
+.back {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: #073f88;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: auto;
+    display: block;
+}
+
+.back:hover {
+    background-color: #327ee2;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 15px;
 }

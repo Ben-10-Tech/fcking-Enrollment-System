@@ -23,11 +23,17 @@
                 </div>
 
                 <div class="mySlides fade">
-                    <img src="../imgs/mother.jpg" alt="Image 2" style="width:100%">
+                    <img src="../imgs/studs.jpg" alt="Image 2" style="width:100%">
                 </div>
 
                 <div class="mySlides fade">
-                    <img src="../imgs/south-2.png" alt="Image 3" style="width:100%">
+                    <img src="../imgs/painting.jpg" alt="Image 3" style="width:100%">
+                </div>
+                <div class="mySlides fade">
+                    <img src="../imgs/boyscout.jpg" alt="Image 4" style="width:100%">
+                </div>
+                <div class="mySlides fade">
+                    <img src="../imgs/books.jpg" alt="Image 5" style="width:100%">
                 </div>
 
                 <!-- Next and previous buttons -->

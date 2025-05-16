@@ -31,9 +31,10 @@
           <label for="Staff_Contact_Number">Contact Number:</label>
           <input type="text" id="Staff_Contact_Number" name="Staff_Contact_Number" required>
 
-          <input type="submit" value="Update">
-          
-          <button onclick="history.back()">Go Back</button>
+          <div class="form-buttons">
+              <input type="submit" value="Update">  
+              <a href="./edit_information_links.php" class="back">Go Back</a>
+          </div>
         </form>
       </div>
   </div>
