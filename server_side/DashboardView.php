@@ -26,15 +26,13 @@ class DashboardView {
         $pendingEnrollees = $this->dashboard->PendingEnrolleesInformation();
         
         if (!empty($pendingEnrollees)) {
-            for ($i = 0; $i < 5; $i++) {
-                $Student_Full_Name = $pendingEnrollees[$i]['Student_First_Name'] . " " . $pendingEnrollees[$i]['Student_Middle_Name'] . " " . $pendingEnrollees[$i]['Student_Last_Name'];
-                $Enrolling_Grade_Level = $pendingEnrollees[$i]['E_Grade_Level'];
-                $Learner_Reference_Number = $pendingEnrollees[$i]['Learner_Reference_Number'];
+            foreach ($pendingEnrollees as $rows) {
+                $Student_Full_Name = $rows['Student_First_Name'] . " " . $rows['Student_Middle_Name'] . " " . $rows['Student_Last_Name'];
                 echo '
                     <tr>
-                        <td>' . $Learner_Reference_Number . '</td>
+                        <td>' . $rows['Learner_Reference_Number'] . '</td>
                         <td>' . $Student_Full_Name . '</td>
-                        <td>' . $Enrolling_Grade_Level . '</td>
+                        <td>' . $rows['E_Grade_Level'] . '</td>
                     </tr>';
             }
         } else {

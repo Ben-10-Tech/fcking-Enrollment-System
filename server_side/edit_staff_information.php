@@ -1,16 +1,19 @@
 <?php
     require_once __DIR__ . '/../server_side/dbconnection.php';
+    require_once __DIR__ . '/../server_side/encryption_and_decryption.php';
     session_start();
 
     class EditInformation {
         protected $conn;
         private $Staff_Id;
+        protected $Encryption;
     
         //automatically run and connect database
         public function __construct() {
             $db = new Connect();
             $this->conn = $db->getConnection();
             $this->Staff_Id = $_SESSION['Admin']['Staff-Id'];
+            $this->Encryption = new Encryption();
         }
 
         public function Has_Address_Id() {
@@ -95,6 +98,10 @@
         public function Update_Identifiers($Employee_Number, $Philhealth_Number, $TIN){
             //1. Check if the teacher already has Identifiers_Id
             //2 If the teacher has Identifiers_Id, update the identifiers
+
+            $Encrypted_Employee_Number = $this->Encryption->passEncrypt($Employee_Number);
+            $Encrypted_Philhealth_Number = $this->Encryption->passEncrypt($Philhealth_Number);
+            $Encrypted_TIN = $this->Encryption->passEncrypt($TIN);
             if($this->Has_Identifiers_Id()) {
                 $sql_get_identifiers_id = "SELECT Staff_Identifier_Id FROM `staffs` WHERE Staff_Id = :Staff_Id";
                 $get_identifiers_id = $this->conn->prepare($sql_get_identifiers_id);
@@ -109,9 +116,9 @@
                                             TIN= :TIN 
                                             WHERE Staff_Identifier_Id = :Staff_Identifier_Id";
                 $update_identifiers = $this->conn->prepare($sql_update_identifiers_id);
-                $update_identifiers->bindparam(':Employee_Number', $Employee_Number);
-                $update_identifiers->bindparam(':Philhealth_Number', $Philhealth_Number);
-                $update_identifiers->bindparam(':TIN', $TIN);
+                $update_identifiers->bindparam(':Employee_Number', $Encrypted_Employee_Number);
+                $update_identifiers->bindparam(':Philhealth_Number', $Encrypted_Philhealth_Number);
+                $update_identifiers->bindparam(':TIN', $Encrypted_TIN);
                 $update_identifiers->bindparam(':Staff_Identifier_Id', $Identifier_Id);
                 if($update_identifiers->execute()) {
                     echo $Identifier_Id;
@@ -126,9 +133,9 @@
                                             (Employee_Number, Philhealth_Number, TIN) 
                                             VALUES (:Employee_Number, :Philhealth_Number, :TIN)";
                 $insert_identifiers = $this->conn->prepare($sql_insert_identifiers);
-                $insert_identifiers->bindparam(':Employee_Number', $Employee_Number);
-                $insert_identifiers->bindparam(':Philhealth_Number', $Philhealth_Number);
-                $insert_identifiers->bindparam(':TIN', $TIN);
+                $insert_identifiers->bindparam(':Employee_Number', $Encrypted_Employee_Number);
+                $insert_identifiers->bindparam(':Philhealth_Number', $Encrypted_Philhealth_Number);
+                $insert_identifiers->bindparam(':TIN', $Encrypted_TIN);
 
                 if($insert_identifiers->execute()) {
                     $Identifier_Id_Insert = $this->conn->lastInsertId();

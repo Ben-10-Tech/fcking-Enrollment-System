@@ -32,9 +32,13 @@ document.addEventListener('DOMContentLoaded', function (){
         if (e.target.matches('.accept-btn') || e.target.matches('.reject-btn')) {
             const enrolleeId = e.target.getAttribute('data-id');
             const action = e.target.getAttribute('data-action');
-
-            const status = action === 'accept' ? 1 : 2; //ternary operator: 1 if accepted, 2 if rejected
-
+            let status = 0
+            if (action === "accept") {
+                status = 4
+            } 
+            else {
+                alert('unrecognized action');
+            }
             fetch('../server_side/updateEnrolleeStatus.php', {
                 method: 'POST',
                 headers: {
@@ -47,7 +51,8 @@ document.addEventListener('DOMContentLoaded', function (){
             .then(response => response.json())
             .then(data=> {
                 if (data.success) {
-                    this.location.reload();
+                    alert(data.message);
+                    location.reload();
                 }
                 else {
                     alert('Error updating status: ' + data.message);
@@ -71,39 +76,32 @@ document.addEventListener('DOMContentLoaded', function (){
                 close.addEventListener('click', function(){
                     modal.style.display = 'none';
                 });
-<<<<<<< HEAD
-
-            fetch('../server_side/adminEnrolleeFollowup.php?id='+ encodeURIComponent(enrolleeId))
-=======
-            const form = document.getElementById('deny-followup');
-            const formData = new FormData(form);
-
-            for(const[key, value] of formData.entries()){
-                console.log(`${key}: ${value}`);
-            }
-            fetch('../server_side/adminEnrolleeFollowup.php', {
-                method: 'POST',
-                body: formData
-            })
->>>>>>> 4194bdd0f92fffffe32814793a4e17c9b5d5bdf3
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                if (data.success) {
-                    data.fields.forEach(field => {
-                        modalContent.insertAdjacentElement('beforeend', `
-                            <input type="checkbox" id="${field}" name="${field}" value="${field}" class="checkboxes">
-                            <label for="${field}">${field}</label><br>
-                        `);  
-                    });
-                    modalContent.innerHTML += `
-                        <button class="submit-btn" data-id="${enrolleeId}">Submit</button>
-                    `;
-                } else {
-                    alert('Error loading fields: ' + data.message);
+            const form = document.getElementById('deny-followup');    
+            form.addEventListener('submit', function(e) {
+                e.preventDefault(); // you forgot this too!  
+                const formData = new FormData(form);
+                for (const [key, value] of formData.entries()) {
+                    console.log(`${key}: ${value}`);
                 }
-            })
+                fetch('../server_side/adminEnrolleeFollowup.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data =>{
+                    if (data.success) {
+                        alert(data.message);
+                        location.reload();
+                    }
+                    else {
+                        alert("ERROR: " + data.message);
+                    }
+                })
+                .catch(error => {
+                console.error("Fetch error:", error);
+                alert("Something went wrong. Please try again.");
+                });
+            });
         }
     });
-    
 });

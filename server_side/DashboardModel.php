@@ -54,7 +54,8 @@ class DashboardModel {
                                         JOIN educational_information ON enrollee.Educational_Information_Id = educational_information.Educational_Information_Id
                                         INNER JOIN grade_level as enrolling_level ON enrolling_level.Grade_Level_Id = educational_information.Enrolling_Grade_Level
                                         WHERE Enrollment_Status = 3
-                                        ORDER BY Enrollee_Id DESC";
+                                        ORDER BY Enrollee_Id DESC
+                                        LIMIT 5";
         $get_pending_enrollees = $this->conn->prepare($sql_get_pending_enrollees);
         $get_pending_enrollees->execute();
         $pending_enrollees = $get_pending_enrollees->fetchAll(PDO::FETCH_ASSOC);

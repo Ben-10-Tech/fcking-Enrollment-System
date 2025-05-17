@@ -76,9 +76,24 @@ class getEnrollees {
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':status', $status, PDO::PARAM_INT);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
+        return $stmt->execute();
     }
-
+    public function insertEnrolleeTransaction($id , $transactionCode , $staffId, $reason,$description) {
+        $sql ="INSERT INTO enrollment_transactions(Enrollee_Id,Transaction_Code, Staff_Id, Reason,Description)
+            VALUES (:enrollee_id, :transaction_code, :staff_Id,:reason, :description)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':enrollee_id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':transaction_code', $transactionCode);
+        $stmt->bindParam(':staff_Id', $staffId, PDO::PARAM_INT);
+        $stmt->bindParam(':reason', $reason);
+        $stmt->bindParam(':description', $description);
+        if($stmt->execute()) {
+            return ['success'=> true, 'message'=> 'query successful'];
+        }
+        else {
+            return ['success'=> false, 'message'=> 'query failed'];
+        }
+    } 
     public function getUserEnrollees($id) {
         $sql = "SELECT * FROM enrollee WHERE User_Id = :id";
 
@@ -137,6 +152,17 @@ class getEnrollees {
        catch(PDOException $e) {
         echo "<td> Error: " . $e->getMessage() . "<td>";
        }
+    }
+
+    public function sendTransactionStatus($id) {
+        $sql = "SELECT et.*, e.Enrollment_Status FROM enrollment_transactions AS et 
+                LEFT JOIN enrollee AS e ON et.Enrollee_Id = e.Enrollee_Id WHERE et.Enrollee_Id = :id";
+        $stmt = $this->conn->prepare($sql);
+
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
     }
    
 }

@@ -24,7 +24,11 @@
                         <th> Display Information </th>
                     </tr>
                     <tbody class="student-info">
-                            
+                            <?php 
+                                include_once __DIR__ . '/../server_side/adminStudentsView.php';
+                                $view = new adminStudentsView();
+                                $view->displayStudents();
+                            ?>
                     </tbody>
                 </table>
             </div>

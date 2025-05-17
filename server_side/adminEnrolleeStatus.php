@@ -51,7 +51,9 @@ class AdminEnrollmentAccessStatus {
             $allInfo = [
                 'Numero ng Sertipiko ng Kapanganakan' => $rows['Psa_Number'],
                 'Learner Reference Number' => $rows['Learner_Reference_Number'],
-                'Buong Pangalan' => htmlspecialchars($rows['Student_Last_Name']) . ', '. htmlspecialchars($rows['Student_First_Name']) . ' ' . htmlspecialchars($rows['Student_Middle_Name']),
+                'Apelyido' => htmlspecialchars($rows['Student_Last_Name']) , 
+                'Pangalan'=> htmlspecialchars($rows['Student_First_Name']), 
+                'Panggitna'=> htmlspecialchars($rows['Student_Middle_Name']),
                 'Petsa ng Kapanganakan' => htmlspecialchars($rows['Birth_Date']),
                 'Edad' => $rows['Age'],
                 'Kabilang sa katutubong grupo ' => $culutralGroup,
@@ -104,7 +106,9 @@ class AdminEnrollmentAccessStatus {
                 $if4ps = ($rows['If_4Ps'] == 1) ? 'Oo' : 'Hindi';
                 $allInfo[] = [
                     'Relasyon' => htmlspecialchars($rows['Parent_Type']),
-                    'Pangalan' => htmlspecialchars($rows['Last_Name']) . ', '. htmlspecialchars($rows['First_Name']) . ' ' . htmlspecialchars($rows['Middle_Name']),
+                    'Apleyido' => htmlspecialchars($rows['Last_Name']) , 
+                    'Pangalan'=> htmlspecialchars($rows['First_Name']) , 
+                    'Panggitna '=> htmlspecialchars($rows['Middle_Name']),
                     'Educational attainment' => htmlspecialchars($rows['Educational_Attainment']),
                     'Numero ng telepono' => $rows['Contact_Number'],
                     'Kabilang sa 4ps' => $if4ps

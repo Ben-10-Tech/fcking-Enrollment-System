@@ -26,3 +26,13 @@
     text-align: center;
     padding: 1rem;
 }
+tr:nth-child(even) {background-color: #ffffff;}
+
+tr:nth-child(odd) {background-color: #f4f4f4;}
+.view-student  {
+    background-color: #003366d5; /* Dark blue */
+    color: white;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
